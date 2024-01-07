@@ -1,0 +1,157 @@
+type Messages @model @auth(rules: [{allow: public}, {allow: private}, {allow: owner}]) {
+  id: ID!
+  content: String
+  createdAt: AWSTime
+  email: String
+  group: [String]
+  orderID: String
+  Orders: [Orders] @manyToMany(relationName: "MessagesOrders")
+}
+
+type Orders @model @auth(rules: [{allow: public}, {allow: private}, {allow: owner}]) {
+  id: ID!
+  CreatedTime: AWSTime
+  CreatedDate: AWSDate
+  Collection: Boolean
+  Name: String
+  Address: String
+  Postcode: String
+  Telephone: String
+  Email: String
+  Distance: Float
+  SecurityID: String
+  Total: Float
+  DrinkItems: [String]
+  HotItems: [String]
+  Cooked: Boolean
+  JobAccepted: Boolean
+  EnRoute: Boolean
+  Delivered: Boolean
+  TimeDelivered: AWSTime
+  JobAcceptedTime: AWSTime
+  Notes: String
+  HotOrderPrep: String
+  TotalNoVAT: Float
+  KitchenMenuId: [String]
+  ChefName: String
+  Driver: String
+  DeliveryCharge: Float
+  kitchenmenus: [KitchenMenu] @manyToMany(relationName: "KitchenMenuOrders")
+  messagess: [Messages] @manyToMany(relationName: "MessagesOrders")
+  JourneyTime: String
+  FullDeliveryTime: AWSTime
+  BackAtBranch: Boolean
+  Complete: Boolean
+  Lat: [Float]
+  Long: [Float]
+  CustLat: Float
+  CustLong: Float
+  Paid: Boolean
+}
+
+type Staff @model @auth(rules: [{allow: public}, {allow: private}, {allow: owner}]) {
+  id: ID!
+  Name: String
+  Email: String
+  TimeEntries: String
+  Role: String
+  HourlyRate: Float
+  StartDate: AWSDate
+  Current: Boolean
+  Telephone: String
+  ContractType: String
+  CarReg: String
+  EndDate: AWSDate
+  Age: String
+  DOB: String
+  timeentrys: [TimeEntry] @manyToMany(relationName: "TimeEntryStaff")
+}
+
+type TimeEntry @model @auth(rules: [{allow: public}, {allow: owner}, {allow: private}]) {
+  id: ID!
+  StaffID: String
+  Hours: Float
+  Dates: [AWSDate]
+  ShiftStart: [String]
+  ShiftFinish: [String]
+  Month: String
+  StaffName: String
+  Holiday: [AWSDate]
+  Staff: [Staff] @manyToMany(relationName: "TimeEntryStaff")
+}
+
+type KitchenMenu @model @auth(rules: [{allow: public}, {allow: private}, {allow: owner}]) {
+  id: ID!
+  Name: String
+  Price: Float
+  Description: String
+  Notes: String
+  Kitchen: Boolean
+  imageSrc: String
+  Prep: AWSTime
+  Ingredients: AWSJSON
+  Snooze: Boolean
+  Extras: AWSJSON
+  Category: String
+  ProfitMargin: Float
+  PriceNoVAT: Float
+  InStock: Boolean
+  StockLevel: Int
+  stockcontrols: [StockControl] @manyToMany(relationName: "StockControlKitchenMenu")
+  Orders: [Orders] @manyToMany(relationName: "KitchenMenuOrders")
+}
+
+type HomePage @model @auth(rules: [{allow: public}, {allow: owner}, {allow: private}]) {
+  id: ID!
+  TopSectionTitle: String
+  TopSectionPic: String
+  TopSectionDescription: String
+}
+
+type Holiday @model @auth(rules: [{allow: public}, {allow: private}, {allow: owner}]) {
+  id: ID!
+  Name: String
+  StartDate: String
+  Description: String
+  EndDate: String
+  Approved: Boolean
+  clockins: [ClockIn] @manyToMany(relationName: "ClockInHoliday")
+}
+
+type ClockIn @model @auth(rules: [{allow: public}, {allow: private}, {allow: owner}]) {
+  id: ID!
+  ClockIn: AWSTime
+  ClockOut: AWSTime
+  Sick: Boolean
+  Holiday: String
+  StaffId: String
+  TimeEntryId: String
+  Date: AWSDate
+  ClockedIn: Boolean
+  ClockedOut: Boolean
+  StaffName: String
+  StaffRole: String
+  Break: Boolean
+  BreakStart: AWSTime
+  BreakEnd: AWSTime
+  Holidays: [Holiday] @manyToMany(relationName: "ClockInHoliday")
+}
+
+type StockControl @model @auth(rules: [{allow: public}, {allow: private}, {allow: owner}]) {
+  id: ID!
+  Name: String
+  Weight: Int
+  Quantity: Int
+  Price: Float
+  PreVAT: Float
+  Supplier: String
+  VAT: Float
+  CurrentStockLevel: Int
+  Cases: Int
+  ProductId: String
+  NewPrice: Float
+  NewVAT: Float
+  UsedBy: String
+  KitchenMenus: [KitchenMenu] @manyToMany(relationName: "StockControlKitchenMenu")
+}
+ 

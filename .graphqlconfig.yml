@@ -1,0 +1,18 @@
+projects:
+  SwiftBytes:
+    schemaPath: amplify/backend/api/SwiftBytes/build/schema.graphql
+    includes:
+      - src/graphql
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: javascript
+        generatedFileName: ''
+        docsFilePath: src
+        region: eu-west-2
+        apiId: null
+        maxDepth: 2
+extensions:
+  amplify:
+    version: 3

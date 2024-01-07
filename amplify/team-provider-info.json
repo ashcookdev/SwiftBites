@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-swiftbytes-staging-123903-authRole",
+      "UnauthRoleArn": "arn:aws:iam::388127569725:role/amplify-swiftbytes-staging-123903-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::388127569725:role/amplify-swiftbytes-staging-123903-authRole",
+      "Region": "eu-west-2",
+      "DeploymentBucketName": "amplify-swiftbytes-staging-123903-deployment",
+      "UnauthRoleName": "amplify-swiftbytes-staging-123903-unauthRole",
+      "StackName": "amplify-swiftbytes-staging-123903",
+      "StackId": "arn:aws:cloudformation:eu-west-2:388127569725:stack/amplify-swiftbytes-staging-123903/eca7db70-9ffd-11ee-be52-0a03f94ddc16",
+      "AmplifyAppId": "d1qa01rg45kvov"
+    },
+    "categories": {
+      "auth": {
+        "SwiftBytes": {}
+      }
+    }
+  }
+}
