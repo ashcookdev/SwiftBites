@@ -107,6 +107,7 @@ export default function TillPayment({
         Email : 'chris@chris.com',
         Cooked: false,
         Paid: true,
+        Complete: false,
 
       })
       ).then(() => {

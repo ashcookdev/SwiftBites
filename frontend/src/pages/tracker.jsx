@@ -32,8 +32,8 @@ export default function DriverLocation() {
             width="100%" 
             height="100%"
           >
-            <Marker width={50} anchor={[51.288413, 0.516339]}>
-  <Overlay anchor={[51.288413, 0.516339]} offset={[120, 79]}>
+            <Marker width={50} anchor={[driver.CustLat, driver.CustLong]}>
+  <Overlay anchor={[driver.CustLat, driver.CustLong]} offset={[120, 79]}>
     <HomeIcon className='animate-pulse text-red-500' height={50} width={50} />
     <div className="bg-white p-2 rounded shadow">
                   <p className='text-xs'>{driver.Name}</p>
