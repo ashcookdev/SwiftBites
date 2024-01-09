@@ -88,11 +88,11 @@
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^5.0.0",
-    "concurrently": "^7.0.0",
+    "concurrently": "^8.2.2",
     "cross-env": "^7.0.3",
-    "electron": "^27.0.4",
+    "electron": "^28.1.2",
     "electron-builder": "^24.9.1",
-    "wait-on": "^6.0.0"
+    "wait-on": "^7.2.0"
   },
   "build": {
     "files": [

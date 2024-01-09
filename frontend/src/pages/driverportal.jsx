@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react'
-import { DataStore } from 'aws-amplify'
+import { DataStore, Geo } from 'aws-amplify'
 import { Orders, Driver } from '../models'
 import { format, parse, set } from 'date-fns'
 import React from 'react'
@@ -209,6 +209,7 @@ const GeoLocate = (order) => {
 // route to google maps open in new tab
 
 const handleRoute = (order) => async () => {
+  GeoLocate(order);
 
   // use address and postcode to create url
 
