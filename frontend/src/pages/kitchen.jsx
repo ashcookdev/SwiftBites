@@ -229,17 +229,7 @@ setIsLoading(true)
     );
 
     // Update Messages model
-    DataStore.save(
-      new Messages({
-        // Set the fields of the new message
-        content: `Table ${order.Table} order has been made, at ${formattedTime} can staff please collect the order`,
-        email: "Kitchen",
-        createdAt: awstime,
-        sessionID: order.Sessionid,
-        orderID: order.id,
-        group: ["Staff", "Kitchen", "Team Leader", "Admin", "Developer"],
-      })
-    );
+    
 
     const data = {
       product: orders.map((item) => item.HotItems),
@@ -264,7 +254,11 @@ setIsLoading(true)
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <Time />
-      <p className='text-purple-700 text-center'>Number of Orders: {orders.length}</p>
+      {Array.isArray(orders) && orders.length > 0 ? (
+        <p className='text-purple-700 text-center'>
+          Number of Orders: {orders.length}
+        </p>
+      ) : null}
       
       <ul role="list" className="divide-y divide-gray-100  mt-2 mb-2">
         {orders.map((order, index) => {

@@ -2,12 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 import { Orders } from '../models';
 import { DataStore } from 'aws-amplify';
 import { format, parse, set } from 'date-fns';
-import { RocketLaunchIcon, ChevronDownIcon, CircleStackIcon, CheckCircleIcon, ClockIcon, TruckIcon, MapIcon, UserCircleIcon } from '@heroicons/react/20/solid';
+import { RocketLaunchIcon, ChevronDownIcon, CircleStackIcon, CheckCircleIcon, ClockIcon, TruckIcon, MapIcon, UserCircleIcon, ChatBubbleBottomCenterIcon } from '@heroicons/react/20/solid';
 import Countdown from 'react-countdown';
-import { CarIcon } from '@heroicons/react/outline';
 import AssignDriver from './assigndriver';
 import Tracker from './tracker';
-import { is } from "date-fns/locale";
 import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import {
@@ -26,10 +24,13 @@ import {
   XMarkIcon,
 
 } from '@heroicons/react/24/outline'
+import ViewOrder from './viewOrder';
+
 
 const navigation = [
   { name: 'Dashboard', href: '/dash', icon: HomeIcon, current: true },
   { name: 'Map', href: '/map', icon: MapPinIcon, current: false },
+  { name: 'Messages', href: '/messages', icon: ChatBubbleBottomCenterIcon, current: false},
   { name: 'Dispatch', href: '/dispatch', icon: CalendarDaysIcon, current: false },
   { name: 'Driver Portal', href: '/driverportal', icon: TruckIcon, current: false },
   { name: 'Kitchen', href: '/kitchen', icon: CakeIcon, current: false},
@@ -47,6 +48,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 import Time from '../time';
+import { View } from "@aws-amplify/ui-react";
 
 
 
@@ -58,7 +60,7 @@ const ipcRenderer = isElectron ? window.require('electron').ipcRenderer : null;
 export default function CafeKitchen() {
   const [orders, setOrders] = useState([]);
   const [currentTime, setCurrentTime] = useState(0);
-  const [selected, setSelected] = useState({})
+  const [selected, setSelected] = useState([])
   const allOrdersSelected = selected.length === orders.length;
   const currentDate = new Date();
   const [prevOrderCount, setPrevOrderCount] = useState(0);
@@ -67,12 +69,19 @@ export default function CafeKitchen() {
   const [isHovered, setIsHovered] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [loading, setLoading] = useState(false);
+  const [show, setShow] = useState(false);
+  const [showViewOrder, setShowViewOrder] = useState(false);
+  const [selectedOrder, setSelectedOrder] = useState(null);
 
 
 
 
+if (show === true) {
+  return (
+    <ViewOrder order={selected} />
+  )
   
-
+}
 
   console.log(orders);
   console.log(durationDistance);
@@ -138,6 +147,8 @@ export default function CafeKitchen() {
       })
     );
   }
+
+  
 
 
   
@@ -278,15 +289,21 @@ export default function CafeKitchen() {
         </div>
 
         <main className="lg:pl-20 bg-white">
+
           <Time/>
           <div className="xl:pl-96">
             <div className="px-4 py-10 sm:px-6 lg:px-8 lg:py-6">  <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 flex">
       <div className="w-2/3 pr-4 border-r border-gray-300">
 
-      <p className="text-purple-900 text-center mt-5">Number of Orders: {orders.length}</p>
+      <p className="text-purple-900 text-center mt-5">
+  Number of Orders: {orders.filter(order => order.Cooked && !order.JobAccepted).length}
+</p>
+
+
 
 
       <ul role="list" className="grid grid-cols-1 gap-6">
+        
         {orders.map((order, index) => (
           <li
             key={index}
@@ -334,12 +351,20 @@ export default function CafeKitchen() {
                   )}
                   {/* Dropdown menu */}
                   <button
-                    type="button"
-                    className="relative inline-flex mt-2 justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700"
-                    onClick={() => setSelected(order)}
-                  >
-                    View Order
-                  </button>
+  type="button"
+  className="relative inline-flex mt-2 justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700"
+  onClick={() => {
+    setSelected(order);
+    setShow(true);
+  }}
+>
+  View Order
+</button>
+
+{show && <ViewOrder order={selected} />}
+{selectedOrder && showViewOrder && (
+        <ViewOrder order={selectedOrder} />
+      )}
                 </div>
               </div>
             </div>
@@ -384,13 +409,17 @@ export default function CafeKitchen() {
         {isHovered ? 'Close' : 'Map'}
       </button>
                       
-                      <button
-                        type="button"
-                        className="relative inline-flex mt-2 justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700"
-                        onClick={() => setSelected(order)}
-                      >
-                        View Order
-                      </button>
+      <button
+  type="button"
+  className="relative inline-flex mt-2 justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700"
+  onClick={() => {
+    setSelectedOrder(order);
+    setShowViewOrder(true);
+  }}
+>
+  View Order
+</button>
+
                     </div>
                   </>
                 ) : order.JobAccepted && order.Delivered ? (

@@ -19,6 +19,10 @@ import {
   
 } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom'
+import Messages from './messages'
+import MapTracker from './mapdash'
+import Time from '../time'
+import DriverPortalDash from './driverportaldash'
 
 const navigation = [
   { name: 'Dashboard', href: '/dash', icon: HomeIcon, current: true },
@@ -135,7 +139,7 @@ export default function Example() {
           <div className="flex h-16 shrink-0 items-center justify-center">
             <img
               className="h-8 w-auto"
-              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+              src="swifty.png"
               alt="Your Company"
             />
           </div>
@@ -169,21 +173,28 @@ export default function Example() {
             <span className="sr-only">Your profile</span>
             <img
               className="h-8 w-8 rounded-full bg-gray-800"
-              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+              src="swifty.png"
               alt=""
             />
           </a>
         </div>
 
-        <main className="lg:pl-20">
-          <div className="xl:pl-96">
-            <div className="px-4 py-10 sm:px-6 lg:px-8 lg:py-6">{/* Main area */}</div>
-          </div>
-        </main>
+        <main className="lg:pl-20 flex flex-col">
+  <Time />
+  <div className="xl:pl-96 flex flex-row">
+    <div className="w-1/2">
+      <DriverPortalDash />
+      <Messages />
+    </div>
+    <div className="w-1/2">
+      <MapTracker />
+    </div>
+  </div>
+</main>
 
-        <aside className="fixed inset-y-0 left-20 hidden w-96 overflow-y-auto border-r border-gray-200 px-4 py-6 sm:px-6 lg:px-8 xl:block">
-          {/* Secondary column (hidden on smaller screens) */}
-        </aside>
+
+
+  
       </div>
     </>
   )

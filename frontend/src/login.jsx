@@ -13,19 +13,25 @@ function App({ signOut, user }) {
       Auth.currentAuthenticatedUser().then(userInfo => {
         // Check if the user is a member of one of the specified groups
         const groups = userInfo.signInUserSession.accessToken.payload['cognito:groups'];
-        if (groups && groups.some(group => ['Drivers', 'Developer', 'Dispatch', 'Admin', 'Kitchen'].includes(group))) {
-          // Redirect the user to the /chat page
-          navigate('/dash');
-          window.location.reload();
-        } else {
-          // Redirect the user to the /dashboard page
-          navigate('/');
-          window.location.reload();
+
+        if (groups) {
+          if (groups.includes('Drivers')) {
+            // Redirect the user to the /mobileportal page
+            navigate('/mobileportal');
+            window.location.reload();
+          } else if (groups.includes('Admin')) {
+            // Redirect the user to the /dash page
+            navigate('/dash');
+            window.location.reload();
+          } else {
+            // Redirect the user to the /dashboard page or any default page
+            navigate('/');
+            window.location.reload();
+          }
         }
       });
     }
   }, [user, navigate]);
-  
 
   return (
     <>

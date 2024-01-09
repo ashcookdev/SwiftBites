@@ -14,19 +14,30 @@ import {
   UserCircleIcon,
   ClockIcon,
   CogIcon,
+  TruckIcon,
+  ChatBubbleBottomCenterIcon,
+  CakeIcon,
+  CurrencyPoundIcon
+  
 } from '@heroicons/react/24/outline'
 import Tracker from './pages/tracker'
 
 const navigation = [
-  { name: 'Dashboard', href: '/dash', icon: HomeIcon, current: true },
-  { name: 'Map', href: '/map', icon: MapPinIcon, current: false },
-  { name: 'Dispatch', href: '/dispatch', icon: CalendarDaysIcon, current: false },
-  { name: 'Driver Portal', href: '/driverportal', icon: CalendarIcon, current: false },
-  { name: 'Staff', href: '/shifts', icon: UserCircleIcon, current: false },
-  { name: 'Clock In', href: 'clockin', icon: ClockIcon, current: false },
-  { name: 'Reports', href: '/reports', icon: ChartPieIcon, current: false },
-  { name: 'Settings', href: '/settings', icon: CogIcon, current: false },
-]
+    { name: 'Dashboard', href: '/dash', icon: HomeIcon, current: true },
+    { name: 'Map', href: '/map', icon: MapPinIcon, current: false },
+    { name: 'Messages', href: '/messages', icon: ChatBubbleBottomCenterIcon, current: false},
+    { name: 'Dispatch', href: '/dispatch', icon: CalendarDaysIcon, current: false },
+    { name: 'Driver Portal', href: '/driverportal', icon: TruckIcon, current: false },
+    { name: 'Kitchen', href: '/kitchen', icon: CakeIcon, current: false},
+    {name: 'Till', href: '/till', icon: CurrencyPoundIcon, current: false},
+  
+  
+    { name: 'Staff', href: '/shifts', icon: UserCircleIcon, current: false },
+    { name: 'Clock In', href: 'clockin', icon: ClockIcon, current: false },
+    { name: 'Reports', href: '/reports', icon: ChartPieIcon, current: false },
+    { name: 'Settings', href: '/settings', icon: CogIcon, current: false },
+  
+  ]
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')

@@ -4,6 +4,7 @@ import { Orders, Driver } from '../models'
 import { format, parse, set } from 'date-fns'
 import React from 'react'
 import { Auth } from 'aws-amplify'
+import Messages from './messages'
 
 export default function DriverPortal() {
   const [driverEmail, setDriverEmail] = useState(null)
@@ -150,6 +151,7 @@ const GeoLocate = (order) => {
 
   const handleDelivered = (order) => async (event) => {
     event.preventDefault();
+    event.stopPropagation();
 
     setIsLoading(true);
 
@@ -173,7 +175,10 @@ const GeoLocate = (order) => {
     }, 5000);
   }
 
-  const handleBackAtBranch = (order) => async () => {
+  const handleBackAtBranch = (order) => async (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
     setIsLoading(true);
 
     const now = new Date()
@@ -222,18 +227,29 @@ const handleRoute = (order) => async () => {
 
 }
 
+const logout = async () => {
+  await Auth.signOut();
+  window.location.reload();
+}
 
 
-    return (
-      <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
-      <p className="text-purple-700 text-center">Number of Orders: {orders.length}</p>
-      <ul role="list" className="grid grid-cols-1 gap-6">
+
+
+
+return (
+  <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
+    <button onClick={logout}
+      type="button"
+      className="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-600 mt-5 mb-5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+    >
+      Logout
+    </button>
+
+    <p className="text-black text-center border border-purple-300 bg-purple-300">Number of Orders: {orders.length}</p>
+    <ul role="list" className="grid grid-cols-1 gap-6">
       {orders.map((order, index) => (
-        <li key={index} className="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow">
-             
-            <div className="flex w-full items-center justify-between space-x-6 p-6">
-            
-
+        <li key={index} className="col-span-1 divide-y divide-gray-200 rounded-lg bg-green-100 mt-10 shadow">
+          <div className="flex w-full items-center justify-between space-x-6 p-6">
             <div className="flex-1 truncate">
               <div className="flex items-center space-x-3">
                 <h3 className="truncate text-sm font-medium text-gray-900">{order.Address}</h3>
@@ -245,77 +261,67 @@ const handleRoute = (order) => async () => {
               <p className="text-gray-500 text-sm truncate">{order.Name}</p>
               <p className="text-gray-500 text-sm truncate">{order.Telephone}</p>
               <p className="text-gray-500 text-sm truncate">{order.Email}</p>
+              <ol className="list-decimal list-inside mt-5">
+                {order.HotItems.map((item, index) => (
+                  <li key={index} className="text-sm font-medium text-gray-900">{item}</li>
+                ))}
+              </ol>
+              <div>
+              <p className="text-sm text-black mt-5"> Total: £{order.Total}</p>
 
+              </div>
             </div>
             {tracking ? (
               <p className="text-green-500 animate-pulse text-sm truncate">Tracking Enabled</p>
             ) : null}
-            <div className="flex-shrink-0">
-            {isLoading ? 
-  <div className="animate-pulse">
-    <img src="./swifty.png" alt="" width="100" height="100" />
-    <p className="text-gray-500 text-sm truncate">Tracking Enabled</p>
-  </div> 
-: null}
-
-            {order.JobAccepted === false && order.Delivered === false ? (
-  <button
-    type="button"
-    className="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-    onClick={handleAcceptJob(order)}
-
-  >
-    Accept Job
-  </button>
-) : order.JobAccepted === true && order.Delivered === true ? (
-  <button
-
-    
-type="button"
-
-    
-className="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-500 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400"
-    onClick={handleBackAtBranch(order)} // Assuming you have a function for this action
-  >
-    Back at Branch
-  </button>
-) : (
-  <button
-    type="button"
-    className="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-    onClick={handleDelivered(order)}
-  >
-    Delivered
-  </button>
-)}
-<button
-onClick={handleRoute(order)}
-    type="button"
-    className="relative inline-flex ml-5 items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-purple-500 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400"
-
-  >
-    Route
-  </button>
-
-
-
-         </div>
-
-
-
-
-          </div>
-          <div>
-           
+            <div className="flex-shrink-0 space-x-4">
+              {isLoading ? 
+                <div className="animate-pulse">
+                  <img src="./swifty.png" alt="" width="100" height="100" />
+                  <p className="text-gray-500 text-sm truncate">Tracking Enabled</p>
+                </div> 
+              : null}
+              {order.JobAccepted === false && order.Delivered === false ? (
+                <button
+                  type="button"
+                  className="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                  onClick={handleAcceptJob(order)}
+                >
+                  Accept Job
+                </button>
+              ) : order.JobAccepted === true && order.Delivered === true ? (
+                <button
+                  type="button"
+                  className="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-500 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400"
+                  onClick={handleBackAtBranch(order)} // Assuming you have a function for this action
+                >
+                  Back at Branch
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  className="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                  onClick={handleDelivered(order)}
+                >
+                  Delivered
+                </button>
+              )}
+              <button
+                onClick={handleRoute(order)}
+                type="button"
+                className="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-purple-500 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400"
+              >
+                Route
+              </button>
+            </div>
           </div>
         </li>
       ))}
     </ul>
-    </div>
+    <Messages />
 
+  </div>
+)
 
-
-
-    )
   }
   
