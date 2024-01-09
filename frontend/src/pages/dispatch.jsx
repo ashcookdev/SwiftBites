@@ -38,7 +38,7 @@ const navigation = [
 
 
   { name: 'Staff', href: '/shifts', icon: UserCircleIcon, current: false },
-  { name: 'Clock In', href: 'clockin', icon: ClockIcon, current: false },
+  { name: 'Clock In', href: '/clockin', icon: ClockIcon, current: false },
   { name: 'Reports', href: '/reports', icon: ChartPieIcon, current: false },
   { name: 'Settings', href: '/settings', icon: CogIcon, current: false },
 

@@ -9,34 +9,15 @@ import {
   HomeIcon,
   UsersIcon,
   XMarkIcon,
-  MapPinIcon,
-  CalendarDaysIcon,
-  UserCircleIcon,
-  ClockIcon,
-  CogIcon,
-  TruckIcon,
-  ChatBubbleBottomCenterIcon,
-  CakeIcon,
-  CurrencyPoundIcon
-
 } from '@heroicons/react/24/outline'
-import Tracker from './pages/tracker'
 
 const navigation = [
-  { name: 'Dashboard', href: '/dash', icon: HomeIcon, current: true },
-  { name: 'Map', href: '/map', icon: MapPinIcon, current: false },
-  { name: 'Messages', href: '/messages', icon: ChatBubbleBottomCenterIcon, current: false},
-  { name: 'Dispatch', href: '/dispatch', icon: CalendarDaysIcon, current: false },
-  { name: 'Driver Portal', href: '/driverportal', icon: TruckIcon, current: false },
-  { name: 'Kitchen', href: '/kitchen', icon: CakeIcon, current: false},
-  {name: 'Till', href: '/till', icon: CurrencyPoundIcon, current: false},
-
-
-  { name: 'Staff', href: '/shifts', icon: UserCircleIcon, current: false },
-  { name: 'Clock In', href: '/clockin', icon: ClockIcon, current: false },
-  { name: 'Reports', href: '/reports', icon: ChartPieIcon, current: false },
-  { name: 'Settings', href: '/settings', icon: CogIcon, current: false },
-
+  { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
+  { name: 'Team', href: '#', icon: UsersIcon, current: false },
+  { name: 'Projects', href: '#', icon: FolderIcon, current: false },
+  { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
+  { name: 'Documents', href: '#', icon: DocumentDuplicateIcon, current: false },
+  { name: 'Reports', href: '#', icon: ChartPieIcon, current: false },
 ]
 
 function classNames(...classes) {
@@ -135,11 +116,11 @@ export default function Example() {
         </Transition.Root>
 
         {/* Static sidebar for desktop */}
-        <div className="hidden lg:fixed lg:inset-y-0 lg:left-0 lg:z-50 lg:block lg:w-12 lg:overflow-y-auto lg:bg-gray-900 lg:pb-4">
+        <div className="hidden lg:fixed lg:inset-y-0 lg:left-0 lg:z-50 lg:block lg:w-20 lg:overflow-y-auto lg:bg-gray-900 lg:pb-4">
           <div className="flex h-16 shrink-0 items-center justify-center">
             <img
-              className="h-15 w-30"
-              src="swifty.png"
+              className="h-8 w-auto"
+              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
               alt="Your Company"
             />
           </div>
@@ -163,7 +144,7 @@ export default function Example() {
           </nav>
         </div>
 
-        <div className="sticky top-0 z-40 flex items-center gap-x-6 bg-white-900 px-4 py-2 shadow-sm sm:px-6 lg:hidden">
+        <div className="sticky top-0 z-40 flex items-center gap-x-6 bg-gray-900 px-4 py-4 shadow-sm sm:px-6 lg:hidden">
           <button type="button" className="-m-2.5 p-2.5 text-gray-400 lg:hidden" onClick={() => setSidebarOpen(true)}>
             <span className="sr-only">Open sidebar</span>
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
@@ -173,19 +154,19 @@ export default function Example() {
             <span className="sr-only">Your profile</span>
             <img
               className="h-8 w-8 rounded-full bg-gray-800"
-              src="swifty.png"
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
               alt=""
             />
           </a>
         </div>
 
-        <main className="lg:pl-10 bg-gray-900">
+        <main className="lg:pl-20">
           <div className="xl:pl-96">
-            <div className="px-4 py-10 sm:px-6 lg:px-8 lg:py-6"><Tracker/></div>
+            <div className="px-4 py-10 sm:px-6 lg:px-8 lg:py-6">{/* Main area */}</div>
           </div>
         </main>
 
-       
+        
       </div>
     </>
   )

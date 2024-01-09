@@ -27,13 +27,15 @@ import DriverPortalDash from './driverportaldash'
 const navigation = [
   { name: 'Dashboard', href: '/dash', icon: HomeIcon, current: true },
   { name: 'Map', href: '/map', icon: MapPinIcon, current: false },
+  { name: 'Messages', href: '/messages', icon: ChatBubbleBottomCenterIcon, current: false},
   { name: 'Dispatch', href: '/dispatch', icon: CalendarDaysIcon, current: false },
   { name: 'Driver Portal', href: '/driverportal', icon: TruckIcon, current: false },
   { name: 'Kitchen', href: '/kitchen', icon: CakeIcon, current: false},
+  {name: 'Till', href: '/till', icon: CurrencyPoundIcon, current: false},
 
 
   { name: 'Staff', href: '/shifts', icon: UserCircleIcon, current: false },
-  { name: 'Clock In', href: 'clockin', icon: ClockIcon, current: false },
+  { name: 'Clock In', href: '/clockin', icon: ClockIcon, current: false },
   { name: 'Reports', href: '/reports', icon: ChartPieIcon, current: false },
   { name: 'Settings', href: '/settings', icon: CogIcon, current: false },
 
@@ -135,7 +137,7 @@ export default function Example() {
         </Transition.Root>
 
         {/* Static sidebar for desktop */}
-        <div className="hidden lg:fixed lg:inset-y-0 lg:left-0 lg:z-50 lg:block lg:w-20 lg:overflow-y-auto lg:bg-gray-900 lg:pb-4">
+        <div className="hidden lg:fixed lg:inset-y-0 lg:left-0 lg:z-50 lg:block lg:w-12 lg:overflow-y-auto lg:bg-gray-900 lg:pb-4">
           <div className="flex h-16 shrink-0 items-center justify-center">
             <img
               className="h-8 w-auto"
@@ -163,7 +165,7 @@ export default function Example() {
           </nav>
         </div>
 
-        <div className="sticky top-0 z-40 flex items-center gap-x-6 bg-gray-900 px-4 py-4 shadow-sm sm:px-6 lg:hidden">
+        <div className="sticky top-0 z-40 flex items-center gap-x-6 bg-white-900 px-4 py-2 shadow-sm sm:px-6 lg:hidden">
           <button type="button" className="-m-2.5 p-2.5 text-gray-400 lg:hidden" onClick={() => setSidebarOpen(true)}>
             <span className="sr-only">Open sidebar</span>
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
