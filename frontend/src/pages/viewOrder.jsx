@@ -31,7 +31,7 @@ export default function Order({order}) {
                     <div className="px-4 sm:px-6">
                       <div className="flex items-start justify-between">
                         <Dialog.Title className="text-base font-semibold leading-6 text-gray-900">
-                          Order
+                          Driver: {order.Driver}
                         </Dialog.Title>
                         <div className="ml-3 flex h-7 items-center">
                           <button
@@ -53,7 +53,7 @@ export default function Order({order}) {
                         <p className="text-sm text-gray-500">Postcode: {order.Postcode}</p>
                         <p className="text-sm text-gray-500">Phone: {order.Phone}</p>
                         <p className="text-sm text-gray-500">Email: {order.Email}</p>
-                        
+
                         {order.HotItems.map((item, index) => (
                             <div key={index} className="flex items-center justify-between mt-10">
                             <p className="text-sm font-medium text-gray-900">{item}</p>

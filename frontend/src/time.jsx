@@ -56,7 +56,7 @@ export default function Time() {
       </div>
       <div className="px-4 py-2 bg-green-500 rounded-full sm:w-auto">
         <h3 className="text-xs font-semibold leading-6 text-white">
-          Orders On Road: {orders.filter(order => order.Paid === true && order.Cooked === true && order.Delivered === false).length}
+        On Road: {orders.filter(order => order.Paid === true && order.Cooked === true && order.Delivered === false).length}
         </h3>
       </div>
       <div className="px-4 py-2 bg-yellow-500 rounded-full sm:w-auto">
@@ -66,7 +66,7 @@ export default function Time() {
       </div>
       <div className="px-4 py-2 bg-red-500 rounded-full sm:w-auto">
         <h3 className="text-xs font-semibold leading-6 text-white">
-          Ready for Pickup: {orders.filter(order => order.Cooked === true && order.Paid === true).length}
+          Ready: {orders.filter(order => order.Cooked === true && order.Paid === true).length}
         </h3>
       </div>
       <div className="px-4 py-2 bg-purple-500 rounded-full sm:w-auto">

@@ -98,47 +98,54 @@ export default function DriverPortal() {
 
 
 
+let lastUpdateTime = Date.now();
+
 const GeoLocate = (order) => {
   console.log("geolocate function running");
-  const interval = setInterval(() => {
-    const getCurrentLocation = () => {
-      return new Promise((resolve, reject) => {
-        navigator.geolocation.getCurrentPosition(resolve, reject);
+
+  const watchId = navigator.geolocation.watchPosition(async (position) => {
+    const now = Date.now();
+    if (now - lastUpdateTime < 60000) {
+      // Less than a minute has passed since the last update, so we skip this update
+      return;
+    }
+
+    lastUpdateTime = now;
+
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+
+    const lat = []
+    const long = []
+
+    lat.push(latitude)
+    long.push(longitude)
+
+    const originalOrder = await DataStore.query(Orders, order.id);
+    if (originalOrder) {
+      const updatedOrder = Orders.copyOf(originalOrder, updated => {
+        updated.Lat= lat; // Push the latitude to the array
+        updated.Long= long // Push the longitude to the array
       });
-    };
 
-    const updateLocation = async () => {
-      const position = await getCurrentLocation();
-      const latitude = position.coords.latitude;
-      const longitude = position.coords.longitude;
+      await DataStore.save(updatedOrder);
+    }
 
-      const lat = []
-      const long = []
+    console.log("location updated");
+    console.log(latitude);
+    console.log(longitude);
+  }, (error) => {
+    console.log(error);
+  }, {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0
+  });
 
-      lat.push(latitude)
-      long.push(longitude)
-
-      const originalOrder = await DataStore.query(Orders, order.id);
-      if (originalOrder) {
-        const updatedOrder = Orders.copyOf(originalOrder, updated => {
-          updated.Lat= lat; // Push the latitude to the array
-      updated.Long= long // Push the longitude to the array
-        });
-
-        await DataStore.save(updatedOrder);
-      }
-
-      console.log("location updated");
-      console.log(latitude);
-      console.log(longitude);
-    };
-
-    updateLocation();
-
-  }, 60000);
-
-  return () => clearInterval(interval);
+  return () => navigator.geolocation.clearWatch(watchId);
 };
+
+
 
 
 

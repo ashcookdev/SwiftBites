@@ -14,7 +14,7 @@ import TillProducts from './pages/tillproducts';
 import StaffNav from './StaffNavbar';
 import CustomerNav from './customernav';
 import Till from './pages/till';
-import Kitchen from './pages/kitchen';
+import Kitchen from './pages/kitchenhome';
 import Delivery from './pages/deliveryform';
 import Staff from './pages/shifts';
 import StaffDetails from './pages/staffdetails';

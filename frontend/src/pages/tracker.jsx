@@ -25,7 +25,6 @@ export default function DriverLocation() {
 
   return (
     <div className="h-screen w-full">
-      <Time/>
       {driver && driver.map(driver => (
         <div key={driver.id} className="h-full w-full mr-5">
           <Map 
