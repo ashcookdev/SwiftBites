@@ -63,7 +63,7 @@ type EagerOrders = {
   readonly HotItems?: (string | null)[] | null;
   readonly Cooked?: boolean | null;
   readonly JobAccepted?: boolean | null;
-  readonly EnRoute?: boolean | null;
+  readonly Arrived?: boolean | null;
   readonly Delivered?: boolean | null;
   readonly TimeDelivered?: string | null;
   readonly JobAcceptedTime?: string | null;
@@ -110,7 +110,7 @@ type LazyOrders = {
   readonly HotItems?: (string | null)[] | null;
   readonly Cooked?: boolean | null;
   readonly JobAccepted?: boolean | null;
-  readonly EnRoute?: boolean | null;
+  readonly Arrived?: boolean | null;
   readonly Delivered?: boolean | null;
   readonly TimeDelivered?: string | null;
   readonly JobAcceptedTime?: string | null;
@@ -446,6 +446,7 @@ type EagerStockControl = {
   readonly NewVAT?: number | null;
   readonly UsedBy?: string | null;
   readonly KitchenMenus?: (StockControlKitchenMenu | null)[] | null;
+  readonly MatchCode?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -470,6 +471,7 @@ type LazyStockControl = {
   readonly NewVAT?: number | null;
   readonly UsedBy?: string | null;
   readonly KitchenMenus: AsyncCollection<StockControlKitchenMenu>;
+  readonly MatchCode?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

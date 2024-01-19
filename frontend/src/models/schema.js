@@ -234,8 +234,8 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "EnRoute": {
-                    "name": "EnRoute",
+                "Arrived": {
+                    "name": "Arrived",
                     "isArray": false,
                     "type": "Boolean",
                     "isRequired": false,
@@ -1533,6 +1533,13 @@ export const schema = {
                         ]
                     }
                 },
+                "MatchCode": {
+                    "name": "MatchCode",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -2090,5 +2097,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "8e0006dc04f000e5b3d0bde83c457b92"
+    "version": "98227c8ded063aeef5ef10934f1fe254"
 };

@@ -58,6 +58,7 @@ return (
                 <div>
                   <p className="text-sm text-black mt-5"> Total: £{order.Total}</p>
                 </div>
+                
               </div>
               {order.JobAccepted ? (order.Delivered ? <span className="text-green-500 animate-pulse">Delivered, Returning</span> : <span className="text-blue-500 animate-pulse">Enroute</span>) : ""}
 

@@ -218,6 +218,20 @@ setIsLoading(true)
       }
     }
   
+    // generate 4 random numbers between 1 and 1000
+    const generateCode = () => {
+      let code = Math.floor(Math.random() * 10000); // This will generate a random number between 0 and 9999
+      code = code.toString().padStart(4, "0"); // This will add leading zeros if the number is less than 4 digits
+      return code;
+    };
+    
+    // Usage
+    const code = generateCode();
+    console.log(code); // Prints a random 4-digit code
+    
+
+
+
 
 
     // Update record in DataStore
@@ -225,6 +239,7 @@ setIsLoading(true)
       Orders.copyOf(order, (updated) => {
         updated.Cooked = true;
         updated.Complete = false;
+        updated.SecurityID = code;
       })
     );
 

@@ -36,6 +36,7 @@ export default function StockControlUpdateForm(props) {
     NewPrice: "",
     NewVAT: "",
     UsedBy: "",
+    MatchCode: "",
   };
   const [Name, setName] = React.useState(initialValues.Name);
   const [Weight, setWeight] = React.useState(initialValues.Weight);
@@ -52,6 +53,7 @@ export default function StockControlUpdateForm(props) {
   const [NewPrice, setNewPrice] = React.useState(initialValues.NewPrice);
   const [NewVAT, setNewVAT] = React.useState(initialValues.NewVAT);
   const [UsedBy, setUsedBy] = React.useState(initialValues.UsedBy);
+  const [MatchCode, setMatchCode] = React.useState(initialValues.MatchCode);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = stockControlRecord
@@ -70,6 +72,7 @@ export default function StockControlUpdateForm(props) {
     setNewPrice(cleanValues.NewPrice);
     setNewVAT(cleanValues.NewVAT);
     setUsedBy(cleanValues.UsedBy);
+    setMatchCode(cleanValues.MatchCode);
     setErrors({});
   };
   const [stockControlRecord, setStockControlRecord] = React.useState(
@@ -99,6 +102,7 @@ export default function StockControlUpdateForm(props) {
     NewPrice: [],
     NewVAT: [],
     UsedBy: [],
+    MatchCode: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -139,6 +143,7 @@ export default function StockControlUpdateForm(props) {
           NewPrice,
           NewVAT,
           UsedBy,
+          MatchCode,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -207,6 +212,7 @@ export default function StockControlUpdateForm(props) {
               NewPrice,
               NewVAT,
               UsedBy,
+              MatchCode,
             };
             const result = onChange(modelFields);
             value = result?.Name ?? value;
@@ -247,6 +253,7 @@ export default function StockControlUpdateForm(props) {
               NewPrice,
               NewVAT,
               UsedBy,
+              MatchCode,
             };
             const result = onChange(modelFields);
             value = result?.Weight ?? value;
@@ -287,6 +294,7 @@ export default function StockControlUpdateForm(props) {
               NewPrice,
               NewVAT,
               UsedBy,
+              MatchCode,
             };
             const result = onChange(modelFields);
             value = result?.Quantity ?? value;
@@ -327,6 +335,7 @@ export default function StockControlUpdateForm(props) {
               NewPrice,
               NewVAT,
               UsedBy,
+              MatchCode,
             };
             const result = onChange(modelFields);
             value = result?.Price ?? value;
@@ -367,6 +376,7 @@ export default function StockControlUpdateForm(props) {
               NewPrice,
               NewVAT,
               UsedBy,
+              MatchCode,
             };
             const result = onChange(modelFields);
             value = result?.PreVAT ?? value;
@@ -403,6 +413,7 @@ export default function StockControlUpdateForm(props) {
               NewPrice,
               NewVAT,
               UsedBy,
+              MatchCode,
             };
             const result = onChange(modelFields);
             value = result?.Supplier ?? value;
@@ -443,6 +454,7 @@ export default function StockControlUpdateForm(props) {
               NewPrice,
               NewVAT,
               UsedBy,
+              MatchCode,
             };
             const result = onChange(modelFields);
             value = result?.VAT ?? value;
@@ -483,6 +495,7 @@ export default function StockControlUpdateForm(props) {
               NewPrice,
               NewVAT,
               UsedBy,
+              MatchCode,
             };
             const result = onChange(modelFields);
             value = result?.CurrentStockLevel ?? value;
@@ -525,6 +538,7 @@ export default function StockControlUpdateForm(props) {
               NewPrice,
               NewVAT,
               UsedBy,
+              MatchCode,
             };
             const result = onChange(modelFields);
             value = result?.Cases ?? value;
@@ -561,6 +575,7 @@ export default function StockControlUpdateForm(props) {
               NewPrice,
               NewVAT,
               UsedBy,
+              MatchCode,
             };
             const result = onChange(modelFields);
             value = result?.ProductId ?? value;
@@ -601,6 +616,7 @@ export default function StockControlUpdateForm(props) {
               NewPrice: value,
               NewVAT,
               UsedBy,
+              MatchCode,
             };
             const result = onChange(modelFields);
             value = result?.NewPrice ?? value;
@@ -641,6 +657,7 @@ export default function StockControlUpdateForm(props) {
               NewPrice,
               NewVAT: value,
               UsedBy,
+              MatchCode,
             };
             const result = onChange(modelFields);
             value = result?.NewVAT ?? value;
@@ -677,6 +694,7 @@ export default function StockControlUpdateForm(props) {
               NewPrice,
               NewVAT,
               UsedBy: value,
+              MatchCode,
             };
             const result = onChange(modelFields);
             value = result?.UsedBy ?? value;
@@ -690,6 +708,43 @@ export default function StockControlUpdateForm(props) {
         errorMessage={errors.UsedBy?.errorMessage}
         hasError={errors.UsedBy?.hasError}
         {...getOverrideProps(overrides, "UsedBy")}
+      ></TextField>
+      <TextField
+        label="Match code"
+        isRequired={false}
+        isReadOnly={false}
+        value={MatchCode}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              Name,
+              Weight,
+              Quantity,
+              Price,
+              PreVAT,
+              Supplier,
+              VAT,
+              CurrentStockLevel,
+              Cases,
+              ProductId,
+              NewPrice,
+              NewVAT,
+              UsedBy,
+              MatchCode: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.MatchCode ?? value;
+          }
+          if (errors.MatchCode?.hasError) {
+            runValidationTasks("MatchCode", value);
+          }
+          setMatchCode(value);
+        }}
+        onBlur={() => runValidationTasks("MatchCode", MatchCode)}
+        errorMessage={errors.MatchCode?.errorMessage}
+        hasError={errors.MatchCode?.hasError}
+        {...getOverrideProps(overrides, "MatchCode")}
       ></TextField>
       <Flex
         justifyContent="space-between"

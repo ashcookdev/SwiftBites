@@ -25,7 +25,7 @@ type Orders @model @auth(rules: [{allow: public}, {allow: private}, {allow: owne
   HotItems: [String]
   Cooked: Boolean
   JobAccepted: Boolean
-  EnRoute: Boolean
+  Arrived: Boolean
   Delivered: Boolean
   TimeDelivered: AWSTime
   JobAcceptedTime: AWSTime
@@ -153,5 +153,6 @@ type StockControl @model @auth(rules: [{allow: public}, {allow: private}, {allow
   NewVAT: Float
   UsedBy: String
   KitchenMenus: [KitchenMenu] @manyToMany(relationName: "StockControlKitchenMenu")
+  MatchCode: String
 }
  

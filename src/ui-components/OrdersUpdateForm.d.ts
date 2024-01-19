@@ -38,7 +38,7 @@ export declare type OrdersUpdateFormInputValues = {
     HotItems?: string[];
     Cooked?: boolean;
     JobAccepted?: boolean;
-    EnRoute?: boolean;
+    Arrived?: boolean;
     Delivered?: boolean;
     TimeDelivered?: string;
     JobAcceptedTime?: string;
@@ -75,7 +75,7 @@ export declare type OrdersUpdateFormValidationValues = {
     HotItems?: ValidationFunction<string>;
     Cooked?: ValidationFunction<boolean>;
     JobAccepted?: ValidationFunction<boolean>;
-    EnRoute?: ValidationFunction<boolean>;
+    Arrived?: ValidationFunction<boolean>;
     Delivered?: ValidationFunction<boolean>;
     TimeDelivered?: ValidationFunction<string>;
     JobAcceptedTime?: ValidationFunction<string>;
@@ -114,7 +114,7 @@ export declare type OrdersUpdateFormOverridesProps = {
     HotItems?: PrimitiveOverrideProps<TextFieldProps>;
     Cooked?: PrimitiveOverrideProps<SwitchFieldProps>;
     JobAccepted?: PrimitiveOverrideProps<SwitchFieldProps>;
-    EnRoute?: PrimitiveOverrideProps<SwitchFieldProps>;
+    Arrived?: PrimitiveOverrideProps<SwitchFieldProps>;
     Delivered?: PrimitiveOverrideProps<SwitchFieldProps>;
     TimeDelivered?: PrimitiveOverrideProps<TextFieldProps>;
     JobAcceptedTime?: PrimitiveOverrideProps<TextFieldProps>;

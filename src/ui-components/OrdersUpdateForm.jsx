@@ -205,7 +205,7 @@ export default function OrdersUpdateForm(props) {
     HotItems: [],
     Cooked: false,
     JobAccepted: false,
-    EnRoute: false,
+    Arrived: false,
     Delivered: false,
     TimeDelivered: "",
     JobAcceptedTime: "",
@@ -247,7 +247,7 @@ export default function OrdersUpdateForm(props) {
   const [JobAccepted, setJobAccepted] = React.useState(
     initialValues.JobAccepted
   );
-  const [EnRoute, setEnRoute] = React.useState(initialValues.EnRoute);
+  const [Arrived, setArrived] = React.useState(initialValues.Arrived);
   const [Delivered, setDelivered] = React.useState(initialValues.Delivered);
   const [TimeDelivered, setTimeDelivered] = React.useState(
     initialValues.TimeDelivered
@@ -305,7 +305,7 @@ export default function OrdersUpdateForm(props) {
     setCurrentHotItemsValue("");
     setCooked(cleanValues.Cooked);
     setJobAccepted(cleanValues.JobAccepted);
-    setEnRoute(cleanValues.EnRoute);
+    setArrived(cleanValues.Arrived);
     setDelivered(cleanValues.Delivered);
     setTimeDelivered(cleanValues.TimeDelivered);
     setJobAcceptedTime(cleanValues.JobAcceptedTime);
@@ -369,7 +369,7 @@ export default function OrdersUpdateForm(props) {
     HotItems: [],
     Cooked: [],
     JobAccepted: [],
-    EnRoute: [],
+    Arrived: [],
     Delivered: [],
     TimeDelivered: [],
     JobAcceptedTime: [],
@@ -431,7 +431,7 @@ export default function OrdersUpdateForm(props) {
           HotItems,
           Cooked,
           JobAccepted,
-          EnRoute,
+          Arrived,
           Delivered,
           TimeDelivered,
           JobAcceptedTime,
@@ -522,7 +522,7 @@ export default function OrdersUpdateForm(props) {
               HotItems,
               Cooked,
               JobAccepted,
-              EnRoute,
+              Arrived,
               Delivered,
               TimeDelivered,
               JobAcceptedTime,
@@ -581,7 +581,7 @@ export default function OrdersUpdateForm(props) {
               HotItems,
               Cooked,
               JobAccepted,
-              EnRoute,
+              Arrived,
               Delivered,
               TimeDelivered,
               JobAcceptedTime,
@@ -639,7 +639,7 @@ export default function OrdersUpdateForm(props) {
               HotItems,
               Cooked,
               JobAccepted,
-              EnRoute,
+              Arrived,
               Delivered,
               TimeDelivered,
               JobAcceptedTime,
@@ -697,7 +697,7 @@ export default function OrdersUpdateForm(props) {
               HotItems,
               Cooked,
               JobAccepted,
-              EnRoute,
+              Arrived,
               Delivered,
               TimeDelivered,
               JobAcceptedTime,
@@ -755,7 +755,7 @@ export default function OrdersUpdateForm(props) {
               HotItems,
               Cooked,
               JobAccepted,
-              EnRoute,
+              Arrived,
               Delivered,
               TimeDelivered,
               JobAcceptedTime,
@@ -813,7 +813,7 @@ export default function OrdersUpdateForm(props) {
               HotItems,
               Cooked,
               JobAccepted,
-              EnRoute,
+              Arrived,
               Delivered,
               TimeDelivered,
               JobAcceptedTime,
@@ -871,7 +871,7 @@ export default function OrdersUpdateForm(props) {
               HotItems,
               Cooked,
               JobAccepted,
-              EnRoute,
+              Arrived,
               Delivered,
               TimeDelivered,
               JobAcceptedTime,
@@ -929,7 +929,7 @@ export default function OrdersUpdateForm(props) {
               HotItems,
               Cooked,
               JobAccepted,
-              EnRoute,
+              Arrived,
               Delivered,
               TimeDelivered,
               JobAcceptedTime,
@@ -991,7 +991,7 @@ export default function OrdersUpdateForm(props) {
               HotItems,
               Cooked,
               JobAccepted,
-              EnRoute,
+              Arrived,
               Delivered,
               TimeDelivered,
               JobAcceptedTime,
@@ -1049,7 +1049,7 @@ export default function OrdersUpdateForm(props) {
               HotItems,
               Cooked,
               JobAccepted,
-              EnRoute,
+              Arrived,
               Delivered,
               TimeDelivered,
               JobAcceptedTime,
@@ -1111,7 +1111,7 @@ export default function OrdersUpdateForm(props) {
               HotItems,
               Cooked,
               JobAccepted,
-              EnRoute,
+              Arrived,
               Delivered,
               TimeDelivered,
               JobAcceptedTime,
@@ -1165,7 +1165,7 @@ export default function OrdersUpdateForm(props) {
               HotItems,
               Cooked,
               JobAccepted,
-              EnRoute,
+              Arrived,
               Delivered,
               TimeDelivered,
               JobAcceptedTime,
@@ -1246,7 +1246,7 @@ export default function OrdersUpdateForm(props) {
               HotItems: values,
               Cooked,
               JobAccepted,
-              EnRoute,
+              Arrived,
               Delivered,
               TimeDelivered,
               JobAcceptedTime,
@@ -1329,7 +1329,7 @@ export default function OrdersUpdateForm(props) {
               HotItems,
               Cooked: value,
               JobAccepted,
-              EnRoute,
+              Arrived,
               Delivered,
               TimeDelivered,
               JobAcceptedTime,
@@ -1387,7 +1387,7 @@ export default function OrdersUpdateForm(props) {
               HotItems,
               Cooked,
               JobAccepted: value,
-              EnRoute,
+              Arrived,
               Delivered,
               TimeDelivered,
               JobAcceptedTime,
@@ -1422,10 +1422,10 @@ export default function OrdersUpdateForm(props) {
         {...getOverrideProps(overrides, "JobAccepted")}
       ></SwitchField>
       <SwitchField
-        label="En route"
+        label="Arrived"
         defaultChecked={false}
         isDisabled={false}
-        isChecked={EnRoute}
+        isChecked={Arrived}
         onChange={(e) => {
           let value = e.target.checked;
           if (onChange) {
@@ -1445,7 +1445,7 @@ export default function OrdersUpdateForm(props) {
               HotItems,
               Cooked,
               JobAccepted,
-              EnRoute: value,
+              Arrived: value,
               Delivered,
               TimeDelivered,
               JobAcceptedTime,
@@ -1467,17 +1467,17 @@ export default function OrdersUpdateForm(props) {
               Paid,
             };
             const result = onChange(modelFields);
-            value = result?.EnRoute ?? value;
+            value = result?.Arrived ?? value;
           }
-          if (errors.EnRoute?.hasError) {
-            runValidationTasks("EnRoute", value);
+          if (errors.Arrived?.hasError) {
+            runValidationTasks("Arrived", value);
           }
-          setEnRoute(value);
+          setArrived(value);
         }}
-        onBlur={() => runValidationTasks("EnRoute", EnRoute)}
-        errorMessage={errors.EnRoute?.errorMessage}
-        hasError={errors.EnRoute?.hasError}
-        {...getOverrideProps(overrides, "EnRoute")}
+        onBlur={() => runValidationTasks("Arrived", Arrived)}
+        errorMessage={errors.Arrived?.errorMessage}
+        hasError={errors.Arrived?.hasError}
+        {...getOverrideProps(overrides, "Arrived")}
       ></SwitchField>
       <SwitchField
         label="Delivered"
@@ -1503,7 +1503,7 @@ export default function OrdersUpdateForm(props) {
               HotItems,
               Cooked,
               JobAccepted,
-              EnRoute,
+              Arrived,
               Delivered: value,
               TimeDelivered,
               JobAcceptedTime,
@@ -1562,7 +1562,7 @@ export default function OrdersUpdateForm(props) {
               HotItems,
               Cooked,
               JobAccepted,
-              EnRoute,
+              Arrived,
               Delivered,
               TimeDelivered: value,
               JobAcceptedTime,
@@ -1621,7 +1621,7 @@ export default function OrdersUpdateForm(props) {
               HotItems,
               Cooked,
               JobAccepted,
-              EnRoute,
+              Arrived,
               Delivered,
               TimeDelivered,
               JobAcceptedTime: value,
@@ -1679,7 +1679,7 @@ export default function OrdersUpdateForm(props) {
               HotItems,
               Cooked,
               JobAccepted,
-              EnRoute,
+              Arrived,
               Delivered,
               TimeDelivered,
               JobAcceptedTime,
@@ -1737,7 +1737,7 @@ export default function OrdersUpdateForm(props) {
               HotItems,
               Cooked,
               JobAccepted,
-              EnRoute,
+              Arrived,
               Delivered,
               TimeDelivered,
               JobAcceptedTime,
@@ -1799,7 +1799,7 @@ export default function OrdersUpdateForm(props) {
               HotItems,
               Cooked,
               JobAccepted,
-              EnRoute,
+              Arrived,
               Delivered,
               TimeDelivered,
               JobAcceptedTime,
@@ -1853,7 +1853,7 @@ export default function OrdersUpdateForm(props) {
               HotItems,
               Cooked,
               JobAccepted,
-              EnRoute,
+              Arrived,
               Delivered,
               TimeDelivered,
               JobAcceptedTime,
@@ -1938,7 +1938,7 @@ export default function OrdersUpdateForm(props) {
               HotItems,
               Cooked,
               JobAccepted,
-              EnRoute,
+              Arrived,
               Delivered,
               TimeDelivered,
               JobAcceptedTime,
@@ -1996,7 +1996,7 @@ export default function OrdersUpdateForm(props) {
               HotItems,
               Cooked,
               JobAccepted,
-              EnRoute,
+              Arrived,
               Delivered,
               TimeDelivered,
               JobAcceptedTime,
@@ -2058,7 +2058,7 @@ export default function OrdersUpdateForm(props) {
               HotItems,
               Cooked,
               JobAccepted,
-              EnRoute,
+              Arrived,
               Delivered,
               TimeDelivered,
               JobAcceptedTime,
@@ -2116,7 +2116,7 @@ export default function OrdersUpdateForm(props) {
               HotItems,
               Cooked,
               JobAccepted,
-              EnRoute,
+              Arrived,
               Delivered,
               TimeDelivered,
               JobAcceptedTime,
@@ -2175,7 +2175,7 @@ export default function OrdersUpdateForm(props) {
               HotItems,
               Cooked,
               JobAccepted,
-              EnRoute,
+              Arrived,
               Delivered,
               TimeDelivered,
               JobAcceptedTime,
@@ -2233,7 +2233,7 @@ export default function OrdersUpdateForm(props) {
               HotItems,
               Cooked,
               JobAccepted,
-              EnRoute,
+              Arrived,
               Delivered,
               TimeDelivered,
               JobAcceptedTime,
@@ -2291,7 +2291,7 @@ export default function OrdersUpdateForm(props) {
               HotItems,
               Cooked,
               JobAccepted,
-              EnRoute,
+              Arrived,
               Delivered,
               TimeDelivered,
               JobAcceptedTime,
@@ -2345,7 +2345,7 @@ export default function OrdersUpdateForm(props) {
               HotItems,
               Cooked,
               JobAccepted,
-              EnRoute,
+              Arrived,
               Delivered,
               TimeDelivered,
               JobAcceptedTime,
@@ -2428,7 +2428,7 @@ export default function OrdersUpdateForm(props) {
               HotItems,
               Cooked,
               JobAccepted,
-              EnRoute,
+              Arrived,
               Delivered,
               TimeDelivered,
               JobAcceptedTime,
@@ -2519,7 +2519,7 @@ export default function OrdersUpdateForm(props) {
               HotItems,
               Cooked,
               JobAccepted,
-              EnRoute,
+              Arrived,
               Delivered,
               TimeDelivered,
               JobAcceptedTime,
@@ -2581,7 +2581,7 @@ export default function OrdersUpdateForm(props) {
               HotItems,
               Cooked,
               JobAccepted,
-              EnRoute,
+              Arrived,
               Delivered,
               TimeDelivered,
               JobAcceptedTime,
@@ -2639,7 +2639,7 @@ export default function OrdersUpdateForm(props) {
               HotItems,
               Cooked,
               JobAccepted,
-              EnRoute,
+              Arrived,
               Delivered,
               TimeDelivered,
               JobAcceptedTime,
