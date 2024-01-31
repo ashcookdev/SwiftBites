@@ -1,8 +1,8 @@
-import { Orders } from '../models';
+import { Orders } from '../backend/models';
 import { DataStore } from 'aws-amplify';
 import { useState, useEffect, useRef } from 'react';
 import { format, parse, set } from 'date-fns';
-import { Messages, StockControl, KitchenMenu } from '../models';
+import { Messages, StockControl, KitchenMenu } from '../backend/models';
 import { RocketLaunchIcon, ChevronRightIcon, CircleStackIcon, CheckCircleIcon, ClockIcon } from '@heroicons/react/20/solid';
 import Countdown from 'react-countdown';
 import Time from '../time';

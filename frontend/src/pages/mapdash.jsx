@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { DataStore } from 'aws-amplify';
-import { Orders } from '../models';
+import { Orders } from '../backend/models';
 import { Map, Marker, Overlay } from 'pigeon-maps';
 import { HomeIcon } from '@heroicons/react/20/solid';
 import Time from '../time';

@@ -22,6 +22,11 @@ import Task from './pages/Task';
 import StaffActions from './pages/staffactions';
 import Home from './pages/home';
 import Messages from './pages/messages';
+import SwiftHome from './pages/SwiftHome';
+import Sales from './pages/sales';
+import SalesPricing from './pages/salespricing';
+import DriverSign from './pages/driversignup';
+import DriverSignApplication from './pages/driverapplicationform';
 
 export function App() {
   const [userGroup, setUserGroup] = React.useState('');
@@ -42,7 +47,7 @@ export function App() {
     <>
       {isSignedIn &&
         !allowedGroups.includes(userGroup) &&
-        !['/kitchen', '/finance', '/chat', '/map', '/dash', '/dispatch', '/', '/kitchen', '/mobileportal'].includes(
+        !['/kitchen', '/finance', '/chat', '/map', '/dash', '/dispatch', '/', '/kitchen', '/mobileportal', '/'].includes(
           location.pathname
         ) ? (
         <CustomerNav />
@@ -52,9 +57,13 @@ export function App() {
         <StaffNav />
       ) : null}
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<SwiftHome />} />
         <Route path="/login" element={<Login />} />
         <Route path="/delivery" element={<Delivery />} />
+        <Route path="/sales" element={<Sales />} />
+        <Route path="/sales/pricing" element={<SalesPricing />} />
+        <Route path="/driversignup" element={<DriverSign />} />
+        <Route path='/driversignup/application' element={<DriverSignApplication />} />
         {userGroup === 'Admin' && (
           <>
             <Route path="/dash" element={<Home />} />

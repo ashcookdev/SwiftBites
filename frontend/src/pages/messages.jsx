@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import { DataStore } from 'aws-amplify';
-import { Messages } from '../models';
+import { Messages } from '../backend/models';
 import { Auth } from 'aws-amplify';
 import { format } from 'date-fns';
 import { Dialog, Transition } from '@headlessui/react';

@@ -1,5 +1,5 @@
 import { DataStore, Predicates } from "aws-amplify";
-import { Orders } from "../models";
+import { Orders } from "../backend/models";
 import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import React from "react";

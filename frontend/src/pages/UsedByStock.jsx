@@ -1,5 +1,5 @@
 import { DataStore } from "aws-amplify";
-import { StockControl } from "../models";
+import { StockControl } from "../backend/models";
 import { useState, useEffect } from "react";
 import { isToday, isTomorrow, isWithinInterval, parseISO } from "date-fns";
 import { useNavigate } from "react-router-dom";

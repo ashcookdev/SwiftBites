@@ -3,7 +3,7 @@ import { Dialog, Transition } from '@headlessui/react'
 
 import { useNavigate } from 'react-router-dom'
 import { DataStore } from 'aws-amplify'
-import { Holiday } from '../models'
+import { Holiday } from '../backend/models'
 import Staff from './shifts'
 import { XCircleIcon } from '@heroicons/react/20/solid'
 

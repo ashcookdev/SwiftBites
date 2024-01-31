@@ -1,7 +1,7 @@
 import { Fragment, useState } from 'react'
 import { Transition } from '@headlessui/react'
 import { DataStore } from 'aws-amplify'
-import { Messages } from '../models'
+import { Messages } from '../backend/models'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 

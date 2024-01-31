@@ -224,6 +224,9 @@ export default function OrdersCreateForm(props) {
     CustLat: "",
     CustLong: "",
     Paid: false,
+    ResturantID: "",
+    DriverID: "",
+    StarRating: "",
   };
   const [CreatedTime, setCreatedTime] = React.useState(
     initialValues.CreatedTime
@@ -282,6 +285,11 @@ export default function OrdersCreateForm(props) {
   const [CustLat, setCustLat] = React.useState(initialValues.CustLat);
   const [CustLong, setCustLong] = React.useState(initialValues.CustLong);
   const [Paid, setPaid] = React.useState(initialValues.Paid);
+  const [ResturantID, setResturantID] = React.useState(
+    initialValues.ResturantID
+  );
+  const [DriverID, setDriverID] = React.useState(initialValues.DriverID);
+  const [StarRating, setStarRating] = React.useState(initialValues.StarRating);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setCreatedTime(initialValues.CreatedTime);
@@ -324,6 +332,9 @@ export default function OrdersCreateForm(props) {
     setCustLat(initialValues.CustLat);
     setCustLong(initialValues.CustLong);
     setPaid(initialValues.Paid);
+    setResturantID(initialValues.ResturantID);
+    setDriverID(initialValues.DriverID);
+    setStarRating(initialValues.StarRating);
     setErrors({});
   };
   const [currentDrinkItemsValue, setCurrentDrinkItemsValue] =
@@ -374,6 +385,9 @@ export default function OrdersCreateForm(props) {
     CustLat: [],
     CustLong: [],
     Paid: [],
+    ResturantID: [],
+    DriverID: [],
+    StarRating: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -436,6 +450,9 @@ export default function OrdersCreateForm(props) {
           CustLat,
           CustLong,
           Paid,
+          ResturantID,
+          DriverID,
+          StarRating,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -526,6 +543,9 @@ export default function OrdersCreateForm(props) {
               CustLat,
               CustLong,
               Paid,
+              ResturantID,
+              DriverID,
+              StarRating,
             };
             const result = onChange(modelFields);
             value = result?.CreatedTime ?? value;
@@ -585,6 +605,9 @@ export default function OrdersCreateForm(props) {
               CustLat,
               CustLong,
               Paid,
+              ResturantID,
+              DriverID,
+              StarRating,
             };
             const result = onChange(modelFields);
             value = result?.CreatedDate ?? value;
@@ -643,6 +666,9 @@ export default function OrdersCreateForm(props) {
               CustLat,
               CustLong,
               Paid,
+              ResturantID,
+              DriverID,
+              StarRating,
             };
             const result = onChange(modelFields);
             value = result?.Collection ?? value;
@@ -701,6 +727,9 @@ export default function OrdersCreateForm(props) {
               CustLat,
               CustLong,
               Paid,
+              ResturantID,
+              DriverID,
+              StarRating,
             };
             const result = onChange(modelFields);
             value = result?.Name ?? value;
@@ -759,6 +788,9 @@ export default function OrdersCreateForm(props) {
               CustLat,
               CustLong,
               Paid,
+              ResturantID,
+              DriverID,
+              StarRating,
             };
             const result = onChange(modelFields);
             value = result?.Address ?? value;
@@ -817,6 +849,9 @@ export default function OrdersCreateForm(props) {
               CustLat,
               CustLong,
               Paid,
+              ResturantID,
+              DriverID,
+              StarRating,
             };
             const result = onChange(modelFields);
             value = result?.Postcode ?? value;
@@ -875,6 +910,9 @@ export default function OrdersCreateForm(props) {
               CustLat,
               CustLong,
               Paid,
+              ResturantID,
+              DriverID,
+              StarRating,
             };
             const result = onChange(modelFields);
             value = result?.Telephone ?? value;
@@ -933,6 +971,9 @@ export default function OrdersCreateForm(props) {
               CustLat,
               CustLong,
               Paid,
+              ResturantID,
+              DriverID,
+              StarRating,
             };
             const result = onChange(modelFields);
             value = result?.Email ?? value;
@@ -995,6 +1036,9 @@ export default function OrdersCreateForm(props) {
               CustLat,
               CustLong,
               Paid,
+              ResturantID,
+              DriverID,
+              StarRating,
             };
             const result = onChange(modelFields);
             value = result?.Distance ?? value;
@@ -1053,6 +1097,9 @@ export default function OrdersCreateForm(props) {
               CustLat,
               CustLong,
               Paid,
+              ResturantID,
+              DriverID,
+              StarRating,
             };
             const result = onChange(modelFields);
             value = result?.SecurityID ?? value;
@@ -1115,6 +1162,9 @@ export default function OrdersCreateForm(props) {
               CustLat,
               CustLong,
               Paid,
+              ResturantID,
+              DriverID,
+              StarRating,
             };
             const result = onChange(modelFields);
             value = result?.Total ?? value;
@@ -1169,6 +1219,9 @@ export default function OrdersCreateForm(props) {
               CustLat,
               CustLong,
               Paid,
+              ResturantID,
+              DriverID,
+              StarRating,
             };
             const result = onChange(modelFields);
             values = result?.DrinkItems ?? values;
@@ -1250,6 +1303,9 @@ export default function OrdersCreateForm(props) {
               CustLat,
               CustLong,
               Paid,
+              ResturantID,
+              DriverID,
+              StarRating,
             };
             const result = onChange(modelFields);
             values = result?.HotItems ?? values;
@@ -1333,6 +1389,9 @@ export default function OrdersCreateForm(props) {
               CustLat,
               CustLong,
               Paid,
+              ResturantID,
+              DriverID,
+              StarRating,
             };
             const result = onChange(modelFields);
             value = result?.Cooked ?? value;
@@ -1391,6 +1450,9 @@ export default function OrdersCreateForm(props) {
               CustLat,
               CustLong,
               Paid,
+              ResturantID,
+              DriverID,
+              StarRating,
             };
             const result = onChange(modelFields);
             value = result?.JobAccepted ?? value;
@@ -1449,6 +1511,9 @@ export default function OrdersCreateForm(props) {
               CustLat,
               CustLong,
               Paid,
+              ResturantID,
+              DriverID,
+              StarRating,
             };
             const result = onChange(modelFields);
             value = result?.Arrived ?? value;
@@ -1507,6 +1572,9 @@ export default function OrdersCreateForm(props) {
               CustLat,
               CustLong,
               Paid,
+              ResturantID,
+              DriverID,
+              StarRating,
             };
             const result = onChange(modelFields);
             value = result?.Delivered ?? value;
@@ -1566,6 +1634,9 @@ export default function OrdersCreateForm(props) {
               CustLat,
               CustLong,
               Paid,
+              ResturantID,
+              DriverID,
+              StarRating,
             };
             const result = onChange(modelFields);
             value = result?.TimeDelivered ?? value;
@@ -1625,6 +1696,9 @@ export default function OrdersCreateForm(props) {
               CustLat,
               CustLong,
               Paid,
+              ResturantID,
+              DriverID,
+              StarRating,
             };
             const result = onChange(modelFields);
             value = result?.JobAcceptedTime ?? value;
@@ -1683,6 +1757,9 @@ export default function OrdersCreateForm(props) {
               CustLat,
               CustLong,
               Paid,
+              ResturantID,
+              DriverID,
+              StarRating,
             };
             const result = onChange(modelFields);
             value = result?.Notes ?? value;
@@ -1741,6 +1818,9 @@ export default function OrdersCreateForm(props) {
               CustLat,
               CustLong,
               Paid,
+              ResturantID,
+              DriverID,
+              StarRating,
             };
             const result = onChange(modelFields);
             value = result?.HotOrderPrep ?? value;
@@ -1803,6 +1883,9 @@ export default function OrdersCreateForm(props) {
               CustLat,
               CustLong,
               Paid,
+              ResturantID,
+              DriverID,
+              StarRating,
             };
             const result = onChange(modelFields);
             value = result?.TotalNoVAT ?? value;
@@ -1857,6 +1940,9 @@ export default function OrdersCreateForm(props) {
               CustLat,
               CustLong,
               Paid,
+              ResturantID,
+              DriverID,
+              StarRating,
             };
             const result = onChange(modelFields);
             values = result?.KitchenMenuId ?? values;
@@ -1942,6 +2028,9 @@ export default function OrdersCreateForm(props) {
               CustLat,
               CustLong,
               Paid,
+              ResturantID,
+              DriverID,
+              StarRating,
             };
             const result = onChange(modelFields);
             value = result?.ChefName ?? value;
@@ -2000,6 +2089,9 @@ export default function OrdersCreateForm(props) {
               CustLat,
               CustLong,
               Paid,
+              ResturantID,
+              DriverID,
+              StarRating,
             };
             const result = onChange(modelFields);
             value = result?.Driver ?? value;
@@ -2062,6 +2154,9 @@ export default function OrdersCreateForm(props) {
               CustLat,
               CustLong,
               Paid,
+              ResturantID,
+              DriverID,
+              StarRating,
             };
             const result = onChange(modelFields);
             value = result?.DeliveryCharge ?? value;
@@ -2120,6 +2215,9 @@ export default function OrdersCreateForm(props) {
               CustLat,
               CustLong,
               Paid,
+              ResturantID,
+              DriverID,
+              StarRating,
             };
             const result = onChange(modelFields);
             value = result?.JourneyTime ?? value;
@@ -2179,6 +2277,9 @@ export default function OrdersCreateForm(props) {
               CustLat,
               CustLong,
               Paid,
+              ResturantID,
+              DriverID,
+              StarRating,
             };
             const result = onChange(modelFields);
             value = result?.FullDeliveryTime ?? value;
@@ -2237,6 +2338,9 @@ export default function OrdersCreateForm(props) {
               CustLat,
               CustLong,
               Paid,
+              ResturantID,
+              DriverID,
+              StarRating,
             };
             const result = onChange(modelFields);
             value = result?.BackAtBranch ?? value;
@@ -2295,6 +2399,9 @@ export default function OrdersCreateForm(props) {
               CustLat,
               CustLong,
               Paid,
+              ResturantID,
+              DriverID,
+              StarRating,
             };
             const result = onChange(modelFields);
             value = result?.Complete ?? value;
@@ -2349,6 +2456,9 @@ export default function OrdersCreateForm(props) {
               CustLat,
               CustLong,
               Paid,
+              ResturantID,
+              DriverID,
+              StarRating,
             };
             const result = onChange(modelFields);
             values = result?.Lat ?? values;
@@ -2432,6 +2542,9 @@ export default function OrdersCreateForm(props) {
               CustLat,
               CustLong,
               Paid,
+              ResturantID,
+              DriverID,
+              StarRating,
             };
             const result = onChange(modelFields);
             values = result?.Long ?? values;
@@ -2523,6 +2636,9 @@ export default function OrdersCreateForm(props) {
               CustLat: value,
               CustLong,
               Paid,
+              ResturantID,
+              DriverID,
+              StarRating,
             };
             const result = onChange(modelFields);
             value = result?.CustLat ?? value;
@@ -2585,6 +2701,9 @@ export default function OrdersCreateForm(props) {
               CustLat,
               CustLong: value,
               Paid,
+              ResturantID,
+              DriverID,
+              StarRating,
             };
             const result = onChange(modelFields);
             value = result?.CustLong ?? value;
@@ -2643,6 +2762,9 @@ export default function OrdersCreateForm(props) {
               CustLat,
               CustLong,
               Paid: value,
+              ResturantID,
+              DriverID,
+              StarRating,
             };
             const result = onChange(modelFields);
             value = result?.Paid ?? value;
@@ -2657,6 +2779,193 @@ export default function OrdersCreateForm(props) {
         hasError={errors.Paid?.hasError}
         {...getOverrideProps(overrides, "Paid")}
       ></SwitchField>
+      <TextField
+        label="Resturant id"
+        isRequired={false}
+        isReadOnly={false}
+        value={ResturantID}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              CreatedTime,
+              CreatedDate,
+              Collection,
+              Name,
+              Address,
+              Postcode,
+              Telephone,
+              Email,
+              Distance,
+              SecurityID,
+              Total,
+              DrinkItems,
+              HotItems,
+              Cooked,
+              JobAccepted,
+              Arrived,
+              Delivered,
+              TimeDelivered,
+              JobAcceptedTime,
+              Notes,
+              HotOrderPrep,
+              TotalNoVAT,
+              KitchenMenuId,
+              ChefName,
+              Driver,
+              DeliveryCharge,
+              JourneyTime,
+              FullDeliveryTime,
+              BackAtBranch,
+              Complete,
+              Lat,
+              Long,
+              CustLat,
+              CustLong,
+              Paid,
+              ResturantID: value,
+              DriverID,
+              StarRating,
+            };
+            const result = onChange(modelFields);
+            value = result?.ResturantID ?? value;
+          }
+          if (errors.ResturantID?.hasError) {
+            runValidationTasks("ResturantID", value);
+          }
+          setResturantID(value);
+        }}
+        onBlur={() => runValidationTasks("ResturantID", ResturantID)}
+        errorMessage={errors.ResturantID?.errorMessage}
+        hasError={errors.ResturantID?.hasError}
+        {...getOverrideProps(overrides, "ResturantID")}
+      ></TextField>
+      <TextField
+        label="Driver id"
+        isRequired={false}
+        isReadOnly={false}
+        value={DriverID}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              CreatedTime,
+              CreatedDate,
+              Collection,
+              Name,
+              Address,
+              Postcode,
+              Telephone,
+              Email,
+              Distance,
+              SecurityID,
+              Total,
+              DrinkItems,
+              HotItems,
+              Cooked,
+              JobAccepted,
+              Arrived,
+              Delivered,
+              TimeDelivered,
+              JobAcceptedTime,
+              Notes,
+              HotOrderPrep,
+              TotalNoVAT,
+              KitchenMenuId,
+              ChefName,
+              Driver,
+              DeliveryCharge,
+              JourneyTime,
+              FullDeliveryTime,
+              BackAtBranch,
+              Complete,
+              Lat,
+              Long,
+              CustLat,
+              CustLong,
+              Paid,
+              ResturantID,
+              DriverID: value,
+              StarRating,
+            };
+            const result = onChange(modelFields);
+            value = result?.DriverID ?? value;
+          }
+          if (errors.DriverID?.hasError) {
+            runValidationTasks("DriverID", value);
+          }
+          setDriverID(value);
+        }}
+        onBlur={() => runValidationTasks("DriverID", DriverID)}
+        errorMessage={errors.DriverID?.errorMessage}
+        hasError={errors.DriverID?.hasError}
+        {...getOverrideProps(overrides, "DriverID")}
+      ></TextField>
+      <TextField
+        label="Star rating"
+        isRequired={false}
+        isReadOnly={false}
+        type="number"
+        step="any"
+        value={StarRating}
+        onChange={(e) => {
+          let value = isNaN(parseInt(e.target.value))
+            ? e.target.value
+            : parseInt(e.target.value);
+          if (onChange) {
+            const modelFields = {
+              CreatedTime,
+              CreatedDate,
+              Collection,
+              Name,
+              Address,
+              Postcode,
+              Telephone,
+              Email,
+              Distance,
+              SecurityID,
+              Total,
+              DrinkItems,
+              HotItems,
+              Cooked,
+              JobAccepted,
+              Arrived,
+              Delivered,
+              TimeDelivered,
+              JobAcceptedTime,
+              Notes,
+              HotOrderPrep,
+              TotalNoVAT,
+              KitchenMenuId,
+              ChefName,
+              Driver,
+              DeliveryCharge,
+              JourneyTime,
+              FullDeliveryTime,
+              BackAtBranch,
+              Complete,
+              Lat,
+              Long,
+              CustLat,
+              CustLong,
+              Paid,
+              ResturantID,
+              DriverID,
+              StarRating: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.StarRating ?? value;
+          }
+          if (errors.StarRating?.hasError) {
+            runValidationTasks("StarRating", value);
+          }
+          setStarRating(value);
+        }}
+        onBlur={() => runValidationTasks("StarRating", StarRating)}
+        errorMessage={errors.StarRating?.errorMessage}
+        hasError={errors.StarRating?.hasError}
+        {...getOverrideProps(overrides, "StarRating")}
+      ></TextField>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}

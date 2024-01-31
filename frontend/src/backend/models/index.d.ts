@@ -1,10 +1,380 @@
 import { ModelInit, MutableModel, __modelMeta__, ManagedIdentifier } from "@aws-amplify/datastore";
 // @ts-ignore
-import { LazyLoading, LazyLoadingDisabled, AsyncCollection, AsyncItem } from "@aws-amplify/datastore";
+import { LazyLoading, LazyLoadingDisabled, AsyncItem, AsyncCollection } from "@aws-amplify/datastore";
 
 
 
 
+
+type EagerInterviewSlots = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<InterviewSlots, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly Time?: string | null;
+  readonly Date?: string | null;
+  readonly Name?: string | null;
+  readonly Notes?: string | null;
+  readonly JobOffered?: string | null;
+  readonly ApplicationID?: string | null;
+  readonly Drivers?: Drivers | null;
+  readonly ZoomLink?: string | null;
+  readonly Telephone?: string | null;
+  readonly Email?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  readonly interviewSlotsDriversId?: string | null;
+}
+
+type LazyInterviewSlots = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<InterviewSlots, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly Time?: string | null;
+  readonly Date?: string | null;
+  readonly Name?: string | null;
+  readonly Notes?: string | null;
+  readonly JobOffered?: string | null;
+  readonly ApplicationID?: string | null;
+  readonly Drivers: AsyncItem<Drivers | undefined>;
+  readonly ZoomLink?: string | null;
+  readonly Telephone?: string | null;
+  readonly Email?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  readonly interviewSlotsDriversId?: string | null;
+}
+
+export declare type InterviewSlots = LazyLoading extends LazyLoadingDisabled ? EagerInterviewSlots : LazyInterviewSlots
+
+export declare const InterviewSlots: (new (init: ModelInit<InterviewSlots>) => InterviewSlots) & {
+  copyOf(source: InterviewSlots, mutator: (draft: MutableModel<InterviewSlots>) => MutableModel<InterviewSlots> | void): InterviewSlots;
+}
+
+type EagerResturantInvoice = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<ResturantInvoice, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly MondayDrivers?: string | null;
+  readonly TuesdayDrivers?: string | null;
+  readonly WednesdayDrivers?: string | null;
+  readonly ThursdayDrivers?: string | null;
+  readonly FridayDrivers?: string | null;
+  readonly SaturdayDrivers?: string | null;
+  readonly SundayDrivers?: string | null;
+  readonly Week?: number | null;
+  readonly TotalBasic?: number | null;
+  readonly TotalDelivery?: number | null;
+  readonly TotalPromo?: number | null;
+  readonly TotalSoftware?: number | null;
+  readonly FullCost?: string | null;
+  readonly Paid?: string | null;
+  readonly ResturantID?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyResturantInvoice = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<ResturantInvoice, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly MondayDrivers?: string | null;
+  readonly TuesdayDrivers?: string | null;
+  readonly WednesdayDrivers?: string | null;
+  readonly ThursdayDrivers?: string | null;
+  readonly FridayDrivers?: string | null;
+  readonly SaturdayDrivers?: string | null;
+  readonly SundayDrivers?: string | null;
+  readonly Week?: number | null;
+  readonly TotalBasic?: number | null;
+  readonly TotalDelivery?: number | null;
+  readonly TotalPromo?: number | null;
+  readonly TotalSoftware?: number | null;
+  readonly FullCost?: string | null;
+  readonly Paid?: string | null;
+  readonly ResturantID?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type ResturantInvoice = LazyLoading extends LazyLoadingDisabled ? EagerResturantInvoice : LazyResturantInvoice
+
+export declare const ResturantInvoice: (new (init: ModelInit<ResturantInvoice>) => ResturantInvoice) & {
+  copyOf(source: ResturantInvoice, mutator: (draft: MutableModel<ResturantInvoice>) => MutableModel<ResturantInvoice> | void): ResturantInvoice;
+}
+
+type EagerDriverHours = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<DriverHours, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly DriverID?: string | null;
+  readonly Date?: string | null;
+  readonly Week?: number | null;
+  readonly MondayBlock?: number | null;
+  readonly TuesdayBlock?: number | null;
+  readonly WednesdayBlock?: number | null;
+  readonly ThursdayBlock?: number | null;
+  readonly FridayBlock?: number | null;
+  readonly SaturdayBlock?: number | null;
+  readonly SundayBlock?: number | null;
+  readonly BasicWageTotal?: number | null;
+  readonly Hours?: number | null;
+  readonly Deliverys?: number | null;
+  readonly Promo?: number | null;
+  readonly ExtraTotal?: number | null;
+  readonly MondayResturant?: string | null;
+  readonly TuesdayResturant?: string | null;
+  readonly WednesdayResturant?: string | null;
+  readonly ThursdayResturant?: string | null;
+  readonly FridayResturant?: string | null;
+  readonly SaturdayResturant?: string | null;
+  readonly SundayResturant?: string | null;
+  readonly Drivers?: (DriverHoursDrivers | null)[] | null;
+  readonly Resturants?: (DriverHoursResturants | null)[] | null;
+  readonly MondayClockIns?: string | null;
+  readonly TuesdayClockins?: string | null;
+  readonly WedesdayClockins?: string | null;
+  readonly ThursdayClockins?: string | null;
+  readonly FridayClockins?: string | null;
+  readonly SaturdayClockins?: string | null;
+  readonly SundayClockins?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyDriverHours = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<DriverHours, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly DriverID?: string | null;
+  readonly Date?: string | null;
+  readonly Week?: number | null;
+  readonly MondayBlock?: number | null;
+  readonly TuesdayBlock?: number | null;
+  readonly WednesdayBlock?: number | null;
+  readonly ThursdayBlock?: number | null;
+  readonly FridayBlock?: number | null;
+  readonly SaturdayBlock?: number | null;
+  readonly SundayBlock?: number | null;
+  readonly BasicWageTotal?: number | null;
+  readonly Hours?: number | null;
+  readonly Deliverys?: number | null;
+  readonly Promo?: number | null;
+  readonly ExtraTotal?: number | null;
+  readonly MondayResturant?: string | null;
+  readonly TuesdayResturant?: string | null;
+  readonly WednesdayResturant?: string | null;
+  readonly ThursdayResturant?: string | null;
+  readonly FridayResturant?: string | null;
+  readonly SaturdayResturant?: string | null;
+  readonly SundayResturant?: string | null;
+  readonly Drivers: AsyncCollection<DriverHoursDrivers>;
+  readonly Resturants: AsyncCollection<DriverHoursResturants>;
+  readonly MondayClockIns?: string | null;
+  readonly TuesdayClockins?: string | null;
+  readonly WedesdayClockins?: string | null;
+  readonly ThursdayClockins?: string | null;
+  readonly FridayClockins?: string | null;
+  readonly SaturdayClockins?: string | null;
+  readonly SundayClockins?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type DriverHours = LazyLoading extends LazyLoadingDisabled ? EagerDriverHours : LazyDriverHours
+
+export declare const DriverHours: (new (init: ModelInit<DriverHours>) => DriverHours) & {
+  copyOf(source: DriverHours, mutator: (draft: MutableModel<DriverHours>) => MutableModel<DriverHours> | void): DriverHours;
+}
+
+type EagerResturants = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<Resturants, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly Name?: string | null;
+  readonly Address?: string | null;
+  readonly Postcode?: string | null;
+  readonly Menu?: string | null;
+  readonly Contract?: string | null;
+  readonly Deliverys?: string | null;
+  readonly CurrentDrivers?: number | null;
+  readonly ContractStart?: string | null;
+  readonly PaymentHistory?: string | null;
+  readonly PaymentType?: string | null;
+  readonly Telephone?: string | null;
+  readonly Email?: string | null;
+  readonly Reviews?: string | null;
+  readonly StarRating?: number | null;
+  readonly ContractFinish?: string | null;
+  readonly Website?: string | null;
+  readonly CurrentOutstanding?: number | null;
+  readonly SortCode?: string | null;
+  readonly AccountNumber?: string | null;
+  readonly DriverID?: string | null;
+  readonly driverhourss?: (DriverHoursResturants | null)[] | null;
+  readonly driverss?: (DriversResturants | null)[] | null;
+  readonly orderss?: (OrdersResturants | null)[] | null;
+  readonly Genre?: string | null;
+  readonly SalesNotes?: string | null;
+  readonly VisitTime?: string | null;
+  readonly CurrentTech?: string | null;
+  readonly VisitDate?: string | null;
+  readonly Prospect?: boolean | null;
+  readonly Sold?: boolean | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyResturants = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<Resturants, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly Name?: string | null;
+  readonly Address?: string | null;
+  readonly Postcode?: string | null;
+  readonly Menu?: string | null;
+  readonly Contract?: string | null;
+  readonly Deliverys?: string | null;
+  readonly CurrentDrivers?: number | null;
+  readonly ContractStart?: string | null;
+  readonly PaymentHistory?: string | null;
+  readonly PaymentType?: string | null;
+  readonly Telephone?: string | null;
+  readonly Email?: string | null;
+  readonly Reviews?: string | null;
+  readonly StarRating?: number | null;
+  readonly ContractFinish?: string | null;
+  readonly Website?: string | null;
+  readonly CurrentOutstanding?: number | null;
+  readonly SortCode?: string | null;
+  readonly AccountNumber?: string | null;
+  readonly DriverID?: string | null;
+  readonly driverhourss: AsyncCollection<DriverHoursResturants>;
+  readonly driverss: AsyncCollection<DriversResturants>;
+  readonly orderss: AsyncCollection<OrdersResturants>;
+  readonly Genre?: string | null;
+  readonly SalesNotes?: string | null;
+  readonly VisitTime?: string | null;
+  readonly CurrentTech?: string | null;
+  readonly VisitDate?: string | null;
+  readonly Prospect?: boolean | null;
+  readonly Sold?: boolean | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type Resturants = LazyLoading extends LazyLoadingDisabled ? EagerResturants : LazyResturants
+
+export declare const Resturants: (new (init: ModelInit<Resturants>) => Resturants) & {
+  copyOf(source: Resturants, mutator: (draft: MutableModel<Resturants>) => MutableModel<Resturants> | void): Resturants;
+}
+
+type EagerDrivers = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<Drivers, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly Name?: string | null;
+  readonly Address?: string | null;
+  readonly PostCode?: string | null;
+  readonly SortCode?: string | null;
+  readonly AccountNumber?: string | null;
+  readonly CarReg?: string | null;
+  readonly MOTDate?: string | null;
+  readonly StartDate?: string | null;
+  readonly BasicWage?: number | null;
+  readonly StarRating?: string | null;
+  readonly InsuranceDetails?: string | null;
+  readonly InterviewNotes?: string | null;
+  readonly Nationality?: string | null;
+  readonly YearsDriving?: string | null;
+  readonly Deliverys?: number | null;
+  readonly ContractFinish?: string | null;
+  readonly InternalReviews?: string | null;
+  readonly ContractType?: string | null;
+  readonly Area?: string | null;
+  readonly driverhourss?: (DriverHoursDrivers | null)[] | null;
+  readonly Resturants?: (DriversResturants | null)[] | null;
+  readonly orderss?: (OrdersDrivers | null)[] | null;
+  readonly NationalInsurance?: string | null;
+  readonly Telephone?: string | null;
+  readonly LicenceNumber?: string | null;
+  readonly PassedInterview?: boolean | null;
+  readonly DriverReviews?: string | null;
+  readonly DOB?: string | null;
+  readonly InterviewAccepted?: boolean | null;
+  readonly HRnotes?: string | null;
+  readonly Current?: boolean | null;
+  readonly County?: string | null;
+  readonly Country?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyDrivers = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<Drivers, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly Name?: string | null;
+  readonly Address?: string | null;
+  readonly PostCode?: string | null;
+  readonly SortCode?: string | null;
+  readonly AccountNumber?: string | null;
+  readonly CarReg?: string | null;
+  readonly MOTDate?: string | null;
+  readonly StartDate?: string | null;
+  readonly BasicWage?: number | null;
+  readonly StarRating?: string | null;
+  readonly InsuranceDetails?: string | null;
+  readonly InterviewNotes?: string | null;
+  readonly Nationality?: string | null;
+  readonly YearsDriving?: string | null;
+  readonly Deliverys?: number | null;
+  readonly ContractFinish?: string | null;
+  readonly InternalReviews?: string | null;
+  readonly ContractType?: string | null;
+  readonly Area?: string | null;
+  readonly driverhourss: AsyncCollection<DriverHoursDrivers>;
+  readonly Resturants: AsyncCollection<DriversResturants>;
+  readonly orderss: AsyncCollection<OrdersDrivers>;
+  readonly NationalInsurance?: string | null;
+  readonly Telephone?: string | null;
+  readonly LicenceNumber?: string | null;
+  readonly PassedInterview?: boolean | null;
+  readonly DriverReviews?: string | null;
+  readonly DOB?: string | null;
+  readonly InterviewAccepted?: boolean | null;
+  readonly HRnotes?: string | null;
+  readonly Current?: boolean | null;
+  readonly County?: string | null;
+  readonly Country?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type Drivers = LazyLoading extends LazyLoadingDisabled ? EagerDrivers : LazyDrivers
+
+export declare const Drivers: (new (init: ModelInit<Drivers>) => Drivers) & {
+  copyOf(source: Drivers, mutator: (draft: MutableModel<Drivers>) => MutableModel<Drivers> | void): Drivers;
+}
 
 type EagerMessages = {
   readonly [__modelMeta__]: {
@@ -18,6 +388,7 @@ type EagerMessages = {
   readonly group?: (string | null)[] | null;
   readonly orderID?: string | null;
   readonly Orders?: (MessagesOrders | null)[] | null;
+  readonly ResturantID?: string | null;
   readonly updatedAt?: string | null;
 }
 
@@ -33,6 +404,7 @@ type LazyMessages = {
   readonly group?: (string | null)[] | null;
   readonly orderID?: string | null;
   readonly Orders: AsyncCollection<MessagesOrders>;
+  readonly ResturantID?: string | null;
   readonly updatedAt?: string | null;
 }
 
@@ -85,6 +457,11 @@ type EagerOrders = {
   readonly CustLat?: number | null;
   readonly CustLong?: number | null;
   readonly Paid?: boolean | null;
+  readonly ResturantID?: string | null;
+  readonly DriverID?: string | null;
+  readonly Resturants?: (OrdersResturants | null)[] | null;
+  readonly Drivers?: (OrdersDrivers | null)[] | null;
+  readonly StarRating?: number | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -132,6 +509,11 @@ type LazyOrders = {
   readonly CustLat?: number | null;
   readonly CustLong?: number | null;
   readonly Paid?: boolean | null;
+  readonly ResturantID?: string | null;
+  readonly DriverID?: string | null;
+  readonly Resturants: AsyncCollection<OrdersResturants>;
+  readonly Drivers: AsyncCollection<OrdersDrivers>;
+  readonly StarRating?: number | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -263,6 +645,7 @@ type EagerKitchenMenu = {
   readonly StockLevel?: number | null;
   readonly stockcontrols?: (StockControlKitchenMenu | null)[] | null;
   readonly Orders?: (KitchenMenuOrders | null)[] | null;
+  readonly ResturantID?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -290,6 +673,7 @@ type LazyKitchenMenu = {
   readonly StockLevel?: number | null;
   readonly stockcontrols: AsyncCollection<StockControlKitchenMenu>;
   readonly Orders: AsyncCollection<KitchenMenuOrders>;
+  readonly ResturantID?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -391,6 +775,7 @@ type EagerClockIn = {
   readonly BreakStart?: string | null;
   readonly BreakEnd?: string | null;
   readonly Holidays?: (ClockInHoliday | null)[] | null;
+  readonly DriverID?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -416,6 +801,7 @@ type LazyClockIn = {
   readonly BreakStart?: string | null;
   readonly BreakEnd?: string | null;
   readonly Holidays: AsyncCollection<ClockInHoliday>;
+  readonly DriverID?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -480,6 +866,176 @@ export declare type StockControl = LazyLoading extends LazyLoadingDisabled ? Eag
 
 export declare const StockControl: (new (init: ModelInit<StockControl>) => StockControl) & {
   copyOf(source: StockControl, mutator: (draft: MutableModel<StockControl>) => MutableModel<StockControl> | void): StockControl;
+}
+
+type EagerDriverHoursDrivers = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<DriverHoursDrivers, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly driverHoursId?: string | null;
+  readonly driversId?: string | null;
+  readonly driverHours: DriverHours;
+  readonly drivers: Drivers;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyDriverHoursDrivers = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<DriverHoursDrivers, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly driverHoursId?: string | null;
+  readonly driversId?: string | null;
+  readonly driverHours: AsyncItem<DriverHours>;
+  readonly drivers: AsyncItem<Drivers>;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type DriverHoursDrivers = LazyLoading extends LazyLoadingDisabled ? EagerDriverHoursDrivers : LazyDriverHoursDrivers
+
+export declare const DriverHoursDrivers: (new (init: ModelInit<DriverHoursDrivers>) => DriverHoursDrivers) & {
+  copyOf(source: DriverHoursDrivers, mutator: (draft: MutableModel<DriverHoursDrivers>) => MutableModel<DriverHoursDrivers> | void): DriverHoursDrivers;
+}
+
+type EagerDriverHoursResturants = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<DriverHoursResturants, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly driverHoursId?: string | null;
+  readonly resturantsId?: string | null;
+  readonly driverHours: DriverHours;
+  readonly resturants: Resturants;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyDriverHoursResturants = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<DriverHoursResturants, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly driverHoursId?: string | null;
+  readonly resturantsId?: string | null;
+  readonly driverHours: AsyncItem<DriverHours>;
+  readonly resturants: AsyncItem<Resturants>;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type DriverHoursResturants = LazyLoading extends LazyLoadingDisabled ? EagerDriverHoursResturants : LazyDriverHoursResturants
+
+export declare const DriverHoursResturants: (new (init: ModelInit<DriverHoursResturants>) => DriverHoursResturants) & {
+  copyOf(source: DriverHoursResturants, mutator: (draft: MutableModel<DriverHoursResturants>) => MutableModel<DriverHoursResturants> | void): DriverHoursResturants;
+}
+
+type EagerDriversResturants = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<DriversResturants, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly resturantsId?: string | null;
+  readonly driversId?: string | null;
+  readonly resturants: Resturants;
+  readonly drivers: Drivers;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyDriversResturants = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<DriversResturants, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly resturantsId?: string | null;
+  readonly driversId?: string | null;
+  readonly resturants: AsyncItem<Resturants>;
+  readonly drivers: AsyncItem<Drivers>;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type DriversResturants = LazyLoading extends LazyLoadingDisabled ? EagerDriversResturants : LazyDriversResturants
+
+export declare const DriversResturants: (new (init: ModelInit<DriversResturants>) => DriversResturants) & {
+  copyOf(source: DriversResturants, mutator: (draft: MutableModel<DriversResturants>) => MutableModel<DriversResturants> | void): DriversResturants;
+}
+
+type EagerOrdersResturants = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<OrdersResturants, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly resturantsId?: string | null;
+  readonly ordersId?: string | null;
+  readonly resturants: Resturants;
+  readonly orders: Orders;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyOrdersResturants = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<OrdersResturants, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly resturantsId?: string | null;
+  readonly ordersId?: string | null;
+  readonly resturants: AsyncItem<Resturants>;
+  readonly orders: AsyncItem<Orders>;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type OrdersResturants = LazyLoading extends LazyLoadingDisabled ? EagerOrdersResturants : LazyOrdersResturants
+
+export declare const OrdersResturants: (new (init: ModelInit<OrdersResturants>) => OrdersResturants) & {
+  copyOf(source: OrdersResturants, mutator: (draft: MutableModel<OrdersResturants>) => MutableModel<OrdersResturants> | void): OrdersResturants;
+}
+
+type EagerOrdersDrivers = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<OrdersDrivers, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly driversId?: string | null;
+  readonly ordersId?: string | null;
+  readonly drivers: Drivers;
+  readonly orders: Orders;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyOrdersDrivers = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<OrdersDrivers, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly driversId?: string | null;
+  readonly ordersId?: string | null;
+  readonly drivers: AsyncItem<Drivers>;
+  readonly orders: AsyncItem<Orders>;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type OrdersDrivers = LazyLoading extends LazyLoadingDisabled ? EagerOrdersDrivers : LazyOrdersDrivers
+
+export declare const OrdersDrivers: (new (init: ModelInit<OrdersDrivers>) => OrdersDrivers) & {
+  copyOf(source: OrdersDrivers, mutator: (draft: MutableModel<OrdersDrivers>) => MutableModel<OrdersDrivers> | void): OrdersDrivers;
 }
 
 type EagerMessagesOrders = {

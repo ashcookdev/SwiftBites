@@ -2,7 +2,7 @@ import { Fragment, useState } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
 import { DataStore } from 'aws-amplify'
-import { Staff, Orders } from '../models'
+import { Staff, Orders } from '../backend/models'
 import { useEffect } from 'react'
 
 function classNames(...classes) {

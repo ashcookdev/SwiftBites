@@ -58,6 +58,9 @@ export declare type OrdersUpdateFormInputValues = {
     CustLat?: number;
     CustLong?: number;
     Paid?: boolean;
+    ResturantID?: string;
+    DriverID?: string;
+    StarRating?: number;
 };
 export declare type OrdersUpdateFormValidationValues = {
     CreatedTime?: ValidationFunction<string>;
@@ -95,6 +98,9 @@ export declare type OrdersUpdateFormValidationValues = {
     CustLat?: ValidationFunction<number>;
     CustLong?: ValidationFunction<number>;
     Paid?: ValidationFunction<boolean>;
+    ResturantID?: ValidationFunction<string>;
+    DriverID?: ValidationFunction<string>;
+    StarRating?: ValidationFunction<number>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type OrdersUpdateFormOverridesProps = {
@@ -134,6 +140,9 @@ export declare type OrdersUpdateFormOverridesProps = {
     CustLat?: PrimitiveOverrideProps<TextFieldProps>;
     CustLong?: PrimitiveOverrideProps<TextFieldProps>;
     Paid?: PrimitiveOverrideProps<SwitchFieldProps>;
+    ResturantID?: PrimitiveOverrideProps<TextFieldProps>;
+    DriverID?: PrimitiveOverrideProps<TextFieldProps>;
+    StarRating?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type OrdersUpdateFormProps = React.PropsWithChildren<{
     overrides?: OrdersUpdateFormOverridesProps | undefined | null;

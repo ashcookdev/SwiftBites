@@ -194,12 +194,16 @@ export default function MessagesUpdateForm(props) {
     email: "",
     group: [],
     orderID: "",
+    ResturantID: "",
   };
   const [content, setContent] = React.useState(initialValues.content);
   const [createdAt, setCreatedAt] = React.useState(initialValues.createdAt);
   const [email, setEmail] = React.useState(initialValues.email);
   const [group, setGroup] = React.useState(initialValues.group);
   const [orderID, setOrderID] = React.useState(initialValues.orderID);
+  const [ResturantID, setResturantID] = React.useState(
+    initialValues.ResturantID
+  );
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = messagesRecord
@@ -211,6 +215,7 @@ export default function MessagesUpdateForm(props) {
     setGroup(cleanValues.group ?? []);
     setCurrentGroupValue("");
     setOrderID(cleanValues.orderID);
+    setResturantID(cleanValues.ResturantID);
     setErrors({});
   };
   const [messagesRecord, setMessagesRecord] = React.useState(messagesModelProp);
@@ -232,6 +237,7 @@ export default function MessagesUpdateForm(props) {
     email: [],
     group: [],
     orderID: [],
+    ResturantID: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -264,6 +270,7 @@ export default function MessagesUpdateForm(props) {
           email,
           group,
           orderID,
+          ResturantID,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -324,6 +331,7 @@ export default function MessagesUpdateForm(props) {
               email,
               group,
               orderID,
+              ResturantID,
             };
             const result = onChange(modelFields);
             value = result?.content ?? value;
@@ -353,6 +361,7 @@ export default function MessagesUpdateForm(props) {
               email,
               group,
               orderID,
+              ResturantID,
             };
             const result = onChange(modelFields);
             value = result?.createdAt ?? value;
@@ -381,6 +390,7 @@ export default function MessagesUpdateForm(props) {
               email: value,
               group,
               orderID,
+              ResturantID,
             };
             const result = onChange(modelFields);
             value = result?.email ?? value;
@@ -405,6 +415,7 @@ export default function MessagesUpdateForm(props) {
               email,
               group: values,
               orderID,
+              ResturantID,
             };
             const result = onChange(modelFields);
             values = result?.group ?? values;
@@ -458,6 +469,7 @@ export default function MessagesUpdateForm(props) {
               email,
               group,
               orderID: value,
+              ResturantID,
             };
             const result = onChange(modelFields);
             value = result?.orderID ?? value;
@@ -471,6 +483,35 @@ export default function MessagesUpdateForm(props) {
         errorMessage={errors.orderID?.errorMessage}
         hasError={errors.orderID?.hasError}
         {...getOverrideProps(overrides, "orderID")}
+      ></TextField>
+      <TextField
+        label="Resturant id"
+        isRequired={false}
+        isReadOnly={false}
+        value={ResturantID}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              content,
+              createdAt,
+              email,
+              group,
+              orderID,
+              ResturantID: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.ResturantID ?? value;
+          }
+          if (errors.ResturantID?.hasError) {
+            runValidationTasks("ResturantID", value);
+          }
+          setResturantID(value);
+        }}
+        onBlur={() => runValidationTasks("ResturantID", ResturantID)}
+        errorMessage={errors.ResturantID?.errorMessage}
+        hasError={errors.ResturantID?.hasError}
+        {...getOverrideProps(overrides, "ResturantID")}
       ></TextField>
       <Flex
         justifyContent="space-between"

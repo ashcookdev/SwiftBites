@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react'
 import { DataStore } from 'aws-amplify'
-import { Orders, Driver } from '../models'
+import { Orders, Driver } from '../backend/models'
 import { format, parse, set } from 'date-fns'
 import React from 'react'
 import { Auth } from 'aws-amplify'

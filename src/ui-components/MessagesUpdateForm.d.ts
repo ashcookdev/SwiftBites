@@ -28,6 +28,7 @@ export declare type MessagesUpdateFormInputValues = {
     email?: string;
     group?: string[];
     orderID?: string;
+    ResturantID?: string;
 };
 export declare type MessagesUpdateFormValidationValues = {
     content?: ValidationFunction<string>;
@@ -35,6 +36,7 @@ export declare type MessagesUpdateFormValidationValues = {
     email?: ValidationFunction<string>;
     group?: ValidationFunction<string>;
     orderID?: ValidationFunction<string>;
+    ResturantID?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type MessagesUpdateFormOverridesProps = {
@@ -44,6 +46,7 @@ export declare type MessagesUpdateFormOverridesProps = {
     email?: PrimitiveOverrideProps<TextFieldProps>;
     group?: PrimitiveOverrideProps<TextFieldProps>;
     orderID?: PrimitiveOverrideProps<TextFieldProps>;
+    ResturantID?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type MessagesUpdateFormProps = React.PropsWithChildren<{
     overrides?: MessagesUpdateFormOverridesProps | undefined | null;

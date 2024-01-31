@@ -21,6 +21,7 @@ import StaffDetails from './pages/staffdetails';
 import Task from './pages/Task';
 import StaffActions from './pages/staffactions';
 import Home from './pages/home';
+import SwiftHome from './pages/SwiftHome';
 // import your Navbar component
 
 
@@ -68,7 +69,7 @@ export function AppRoutes() {
       <StaffNav />
     ) : null}
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<SwiftHome />} />
         <Route path="/login" element={<Login />} />
         <Route path= '/delivery' element={<Delivery />} />
         {userGroup === 'Drivers' && 

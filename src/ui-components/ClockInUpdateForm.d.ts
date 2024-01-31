@@ -37,6 +37,7 @@ export declare type ClockInUpdateFormInputValues = {
     Break?: boolean;
     BreakStart?: string;
     BreakEnd?: string;
+    DriverID?: string;
 };
 export declare type ClockInUpdateFormValidationValues = {
     ClockIn?: ValidationFunction<string>;
@@ -53,6 +54,7 @@ export declare type ClockInUpdateFormValidationValues = {
     Break?: ValidationFunction<boolean>;
     BreakStart?: ValidationFunction<string>;
     BreakEnd?: ValidationFunction<string>;
+    DriverID?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type ClockInUpdateFormOverridesProps = {
@@ -71,6 +73,7 @@ export declare type ClockInUpdateFormOverridesProps = {
     Break?: PrimitiveOverrideProps<SwitchFieldProps>;
     BreakStart?: PrimitiveOverrideProps<TextFieldProps>;
     BreakEnd?: PrimitiveOverrideProps<TextFieldProps>;
+    DriverID?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type ClockInUpdateFormProps = React.PropsWithChildren<{
     overrides?: ClockInUpdateFormOverridesProps | undefined | null;

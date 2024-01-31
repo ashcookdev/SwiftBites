@@ -43,6 +43,7 @@ export default function ClockInUpdateForm(props) {
     Break: false,
     BreakStart: "",
     BreakEnd: "",
+    DriverID: "",
   };
   const [clockIn, setClockIn] = React.useState(initialValues.ClockIn);
   const [ClockOut, setClockOut] = React.useState(initialValues.ClockOut);
@@ -60,6 +61,7 @@ export default function ClockInUpdateForm(props) {
   const [Break1, setBreak1] = React.useState(initialValues.Break);
   const [BreakStart, setBreakStart] = React.useState(initialValues.BreakStart);
   const [BreakEnd, setBreakEnd] = React.useState(initialValues.BreakEnd);
+  const [DriverID, setDriverID] = React.useState(initialValues.DriverID);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = clockInRecord
@@ -79,6 +81,7 @@ export default function ClockInUpdateForm(props) {
     setBreak1(cleanValues.Break);
     setBreakStart(cleanValues.BreakStart);
     setBreakEnd(cleanValues.BreakEnd);
+    setDriverID(cleanValues.DriverID);
     setErrors({});
   };
   const [clockInRecord, setClockInRecord] = React.useState(clockInModelProp);
@@ -107,6 +110,7 @@ export default function ClockInUpdateForm(props) {
     Break: [],
     BreakStart: [],
     BreakEnd: [],
+    DriverID: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -148,6 +152,7 @@ export default function ClockInUpdateForm(props) {
           Break: Break1,
           BreakStart,
           BreakEnd,
+          DriverID,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -218,6 +223,7 @@ export default function ClockInUpdateForm(props) {
               Break: Break1,
               BreakStart,
               BreakEnd,
+              DriverID,
             };
             const result = onChange(modelFields);
             value = result?.ClockIn ?? value;
@@ -256,6 +262,7 @@ export default function ClockInUpdateForm(props) {
               Break: Break1,
               BreakStart,
               BreakEnd,
+              DriverID,
             };
             const result = onChange(modelFields);
             value = result?.ClockOut ?? value;
@@ -293,6 +300,7 @@ export default function ClockInUpdateForm(props) {
               Break: Break1,
               BreakStart,
               BreakEnd,
+              DriverID,
             };
             const result = onChange(modelFields);
             value = result?.Sick ?? value;
@@ -330,6 +338,7 @@ export default function ClockInUpdateForm(props) {
               Break: Break1,
               BreakStart,
               BreakEnd,
+              DriverID,
             };
             const result = onChange(modelFields);
             value = result?.Holiday ?? value;
@@ -367,6 +376,7 @@ export default function ClockInUpdateForm(props) {
               Break: Break1,
               BreakStart,
               BreakEnd,
+              DriverID,
             };
             const result = onChange(modelFields);
             value = result?.StaffId ?? value;
@@ -404,6 +414,7 @@ export default function ClockInUpdateForm(props) {
               Break: Break1,
               BreakStart,
               BreakEnd,
+              DriverID,
             };
             const result = onChange(modelFields);
             value = result?.TimeEntryId ?? value;
@@ -442,6 +453,7 @@ export default function ClockInUpdateForm(props) {
               Break: Break1,
               BreakStart,
               BreakEnd,
+              DriverID,
             };
             const result = onChange(modelFields);
             value = result?.Date ?? value;
@@ -479,6 +491,7 @@ export default function ClockInUpdateForm(props) {
               Break: Break1,
               BreakStart,
               BreakEnd,
+              DriverID,
             };
             const result = onChange(modelFields);
             value = result?.ClockedIn ?? value;
@@ -516,6 +529,7 @@ export default function ClockInUpdateForm(props) {
               Break: Break1,
               BreakStart,
               BreakEnd,
+              DriverID,
             };
             const result = onChange(modelFields);
             value = result?.ClockedOut ?? value;
@@ -553,6 +567,7 @@ export default function ClockInUpdateForm(props) {
               Break: Break1,
               BreakStart,
               BreakEnd,
+              DriverID,
             };
             const result = onChange(modelFields);
             value = result?.StaffName ?? value;
@@ -590,6 +605,7 @@ export default function ClockInUpdateForm(props) {
               Break: Break1,
               BreakStart,
               BreakEnd,
+              DriverID,
             };
             const result = onChange(modelFields);
             value = result?.StaffRole ?? value;
@@ -627,6 +643,7 @@ export default function ClockInUpdateForm(props) {
               Break: value,
               BreakStart,
               BreakEnd,
+              DriverID,
             };
             const result = onChange(modelFields);
             value = result?.Break ?? value;
@@ -665,6 +682,7 @@ export default function ClockInUpdateForm(props) {
               Break: Break1,
               BreakStart: value,
               BreakEnd,
+              DriverID,
             };
             const result = onChange(modelFields);
             value = result?.BreakStart ?? value;
@@ -703,6 +721,7 @@ export default function ClockInUpdateForm(props) {
               Break: Break1,
               BreakStart,
               BreakEnd: value,
+              DriverID,
             };
             const result = onChange(modelFields);
             value = result?.BreakEnd ?? value;
@@ -716,6 +735,44 @@ export default function ClockInUpdateForm(props) {
         errorMessage={errors.BreakEnd?.errorMessage}
         hasError={errors.BreakEnd?.hasError}
         {...getOverrideProps(overrides, "BreakEnd")}
+      ></TextField>
+      <TextField
+        label="Driver id"
+        isRequired={false}
+        isReadOnly={false}
+        value={DriverID}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              ClockIn: clockIn,
+              ClockOut,
+              Sick,
+              Holiday,
+              StaffId,
+              TimeEntryId,
+              Date,
+              ClockedIn,
+              ClockedOut,
+              StaffName,
+              StaffRole,
+              Break: Break1,
+              BreakStart,
+              BreakEnd,
+              DriverID: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.DriverID ?? value;
+          }
+          if (errors.DriverID?.hasError) {
+            runValidationTasks("DriverID", value);
+          }
+          setDriverID(value);
+        }}
+        onBlur={() => runValidationTasks("DriverID", DriverID)}
+        errorMessage={errors.DriverID?.errorMessage}
+        hasError={errors.DriverID?.hasError}
+        {...getOverrideProps(overrides, "DriverID")}
       ></TextField>
       <Flex
         justifyContent="space-between"

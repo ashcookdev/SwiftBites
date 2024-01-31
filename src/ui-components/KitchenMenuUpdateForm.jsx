@@ -45,6 +45,7 @@ export default function KitchenMenuUpdateForm(props) {
     PriceNoVAT: "",
     InStock: false,
     StockLevel: "",
+    ResturantID: "",
   };
   const [Name, setName] = React.useState(initialValues.Name);
   const [Price, setPrice] = React.useState(initialValues.Price);
@@ -67,6 +68,9 @@ export default function KitchenMenuUpdateForm(props) {
   const [PriceNoVAT, setPriceNoVAT] = React.useState(initialValues.PriceNoVAT);
   const [InStock, setInStock] = React.useState(initialValues.InStock);
   const [StockLevel, setStockLevel] = React.useState(initialValues.StockLevel);
+  const [ResturantID, setResturantID] = React.useState(
+    initialValues.ResturantID
+  );
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = kitchenMenuRecord
@@ -96,6 +100,7 @@ export default function KitchenMenuUpdateForm(props) {
     setPriceNoVAT(cleanValues.PriceNoVAT);
     setInStock(cleanValues.InStock);
     setStockLevel(cleanValues.StockLevel);
+    setResturantID(cleanValues.ResturantID);
     setErrors({});
   };
   const [kitchenMenuRecord, setKitchenMenuRecord] =
@@ -126,6 +131,7 @@ export default function KitchenMenuUpdateForm(props) {
     PriceNoVAT: [],
     InStock: [],
     StockLevel: [],
+    ResturantID: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -168,6 +174,7 @@ export default function KitchenMenuUpdateForm(props) {
           PriceNoVAT,
           InStock,
           StockLevel,
+          ResturantID,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -238,6 +245,7 @@ export default function KitchenMenuUpdateForm(props) {
               PriceNoVAT,
               InStock,
               StockLevel,
+              ResturantID,
             };
             const result = onChange(modelFields);
             value = result?.Name ?? value;
@@ -280,6 +288,7 @@ export default function KitchenMenuUpdateForm(props) {
               PriceNoVAT,
               InStock,
               StockLevel,
+              ResturantID,
             };
             const result = onChange(modelFields);
             value = result?.Price ?? value;
@@ -318,6 +327,7 @@ export default function KitchenMenuUpdateForm(props) {
               PriceNoVAT,
               InStock,
               StockLevel,
+              ResturantID,
             };
             const result = onChange(modelFields);
             value = result?.Description ?? value;
@@ -356,6 +366,7 @@ export default function KitchenMenuUpdateForm(props) {
               PriceNoVAT,
               InStock,
               StockLevel,
+              ResturantID,
             };
             const result = onChange(modelFields);
             value = result?.Notes ?? value;
@@ -394,6 +405,7 @@ export default function KitchenMenuUpdateForm(props) {
               PriceNoVAT,
               InStock,
               StockLevel,
+              ResturantID,
             };
             const result = onChange(modelFields);
             value = result?.Kitchen ?? value;
@@ -432,6 +444,7 @@ export default function KitchenMenuUpdateForm(props) {
               PriceNoVAT,
               InStock,
               StockLevel,
+              ResturantID,
             };
             const result = onChange(modelFields);
             value = result?.imageSrc ?? value;
@@ -471,6 +484,7 @@ export default function KitchenMenuUpdateForm(props) {
               PriceNoVAT,
               InStock,
               StockLevel,
+              ResturantID,
             };
             const result = onChange(modelFields);
             value = result?.Prep ?? value;
@@ -509,6 +523,7 @@ export default function KitchenMenuUpdateForm(props) {
               PriceNoVAT,
               InStock,
               StockLevel,
+              ResturantID,
             };
             const result = onChange(modelFields);
             value = result?.Ingredients ?? value;
@@ -547,6 +562,7 @@ export default function KitchenMenuUpdateForm(props) {
               PriceNoVAT,
               InStock,
               StockLevel,
+              ResturantID,
             };
             const result = onChange(modelFields);
             value = result?.Snooze ?? value;
@@ -585,6 +601,7 @@ export default function KitchenMenuUpdateForm(props) {
               PriceNoVAT,
               InStock,
               StockLevel,
+              ResturantID,
             };
             const result = onChange(modelFields);
             value = result?.Extras ?? value;
@@ -623,6 +640,7 @@ export default function KitchenMenuUpdateForm(props) {
               PriceNoVAT,
               InStock,
               StockLevel,
+              ResturantID,
             };
             const result = onChange(modelFields);
             value = result?.Category ?? value;
@@ -665,6 +683,7 @@ export default function KitchenMenuUpdateForm(props) {
               PriceNoVAT,
               InStock,
               StockLevel,
+              ResturantID,
             };
             const result = onChange(modelFields);
             value = result?.ProfitMargin ?? value;
@@ -707,6 +726,7 @@ export default function KitchenMenuUpdateForm(props) {
               PriceNoVAT: value,
               InStock,
               StockLevel,
+              ResturantID,
             };
             const result = onChange(modelFields);
             value = result?.PriceNoVAT ?? value;
@@ -745,6 +765,7 @@ export default function KitchenMenuUpdateForm(props) {
               PriceNoVAT,
               InStock: value,
               StockLevel,
+              ResturantID,
             };
             const result = onChange(modelFields);
             value = result?.InStock ?? value;
@@ -787,6 +808,7 @@ export default function KitchenMenuUpdateForm(props) {
               PriceNoVAT,
               InStock,
               StockLevel: value,
+              ResturantID,
             };
             const result = onChange(modelFields);
             value = result?.StockLevel ?? value;
@@ -800,6 +822,45 @@ export default function KitchenMenuUpdateForm(props) {
         errorMessage={errors.StockLevel?.errorMessage}
         hasError={errors.StockLevel?.hasError}
         {...getOverrideProps(overrides, "StockLevel")}
+      ></TextField>
+      <TextField
+        label="Resturant id"
+        isRequired={false}
+        isReadOnly={false}
+        value={ResturantID}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              Name,
+              Price,
+              Description,
+              Notes,
+              Kitchen,
+              imageSrc,
+              Prep,
+              Ingredients,
+              Snooze,
+              Extras,
+              Category,
+              ProfitMargin,
+              PriceNoVAT,
+              InStock,
+              StockLevel,
+              ResturantID: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.ResturantID ?? value;
+          }
+          if (errors.ResturantID?.hasError) {
+            runValidationTasks("ResturantID", value);
+          }
+          setResturantID(value);
+        }}
+        onBlur={() => runValidationTasks("ResturantID", ResturantID)}
+        errorMessage={errors.ResturantID?.errorMessage}
+        hasError={errors.ResturantID?.hasError}
+        {...getOverrideProps(overrides, "ResturantID")}
       ></TextField>
       <Flex
         justifyContent="space-between"

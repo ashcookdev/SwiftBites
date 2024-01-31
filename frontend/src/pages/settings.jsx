@@ -10,7 +10,7 @@ import {
   UsersIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline'
-import {Staff} from "../models"
+import {Staff} from "../backend/models"
 import { DataStore, Predicates } from 'aws-amplify'
 import { useEffect } from 'react'
 import { Auth } from 'aws-amplify'

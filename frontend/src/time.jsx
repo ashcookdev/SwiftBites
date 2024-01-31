@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { DataStore } from 'aws-amplify';
-import { Orders,ClockIn } from './models';
+import { Orders,ClockIn } from './backend/models';
 
 export default function Time() {
   const [time, setTime] = useState(new Date());

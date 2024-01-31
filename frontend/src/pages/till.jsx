@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { DataStore, Predicates } from "aws-amplify";
 import { format, parse, set } from "date-fns";
-import { Messages, KitchenMenu,  } from "../models";
+import { Messages, KitchenMenu,  } from "../backend/models";
 import TillPayments from "./TillPayments";
 import { useNavigate } from "react-router-dom";
 import Kitchen from "./kitchen";

@@ -1,3 +1,142 @@
+type InterviewSlots @model @auth(rules: [{allow: public, operations: [update, create, read]}, {allow: owner}]) {
+  id: ID!
+  Time: String
+  Date: AWSDate
+  Name: String
+  Notes: String
+  JobOffered: String
+  ApplicationID: String
+  Drivers: Drivers @hasOne
+  ZoomLink: String
+  Telephone: String
+  Email: String
+}
+
+type ResturantInvoice @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  MondayDrivers: AWSJSON
+  TuesdayDrivers: AWSJSON
+  WednesdayDrivers: AWSJSON
+  ThursdayDrivers: AWSJSON
+  FridayDrivers: AWSJSON
+  SaturdayDrivers: AWSJSON
+  SundayDrivers: AWSJSON
+  Week: Int
+  TotalBasic: Float
+  TotalDelivery: Int
+  TotalPromo: Int
+  TotalSoftware: Float
+  FullCost: String
+  Paid: String
+  ResturantID: String
+}
+
+type DriverHours @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  DriverID: String
+  Date: AWSDate
+  Week: Int
+  MondayBlock: Int
+  TuesdayBlock: Int
+  WednesdayBlock: Int
+  ThursdayBlock: Int
+  FridayBlock: Int
+  SaturdayBlock: Int
+  SundayBlock: Int
+  BasicWageTotal: Float
+  Hours: Float
+  Deliverys: Int
+  Promo: Int
+  ExtraTotal: Float
+  MondayResturant: AWSJSON
+  TuesdayResturant: AWSJSON
+  WednesdayResturant: AWSJSON
+  ThursdayResturant: String
+  FridayResturant: String
+  SaturdayResturant: String
+  SundayResturant: String
+  Drivers: [Drivers] @manyToMany(relationName: "DriverHoursDrivers")
+  Resturants: [Resturants] @manyToMany(relationName: "DriverHoursResturants")
+  MondayClockIns: AWSJSON
+  TuesdayClockins: AWSJSON
+  WedesdayClockins: AWSJSON
+  ThursdayClockins: AWSJSON
+  FridayClockins: AWSJSON
+  SaturdayClockins: AWSJSON
+  SundayClockins: AWSJSON
+}
+
+type Resturants @model @auth(rules: [{allow: groups, groups: ["Drivers"], operations: [read, create, update, delete]}, {allow: groups, groups: ["Admin"], operations: [read, update, create, delete]}, {allow: owner}]) {
+  id: ID!
+  Name: String
+  Address: String
+  Postcode: String
+  Menu: AWSJSON
+  Contract: String
+  Deliverys: String
+  CurrentDrivers: Int
+  ContractStart: AWSDate
+  PaymentHistory: AWSJSON
+  PaymentType: String
+  Telephone: String
+  Email: String
+  Reviews: String
+  StarRating: Int
+  ContractFinish: AWSDate
+  Website: String
+  CurrentOutstanding: Float
+  SortCode: String
+  AccountNumber: String
+  DriverID: String
+  driverhourss: [DriverHours] @manyToMany(relationName: "DriverHoursResturants")
+  driverss: [Drivers] @manyToMany(relationName: "DriversResturants")
+  orderss: [Orders] @manyToMany(relationName: "OrdersResturants")
+  Genre: String
+  SalesNotes: String
+  VisitTime: String
+  CurrentTech: String
+  VisitDate: String
+  Prospect: Boolean
+  Sold: Boolean
+}
+
+type Drivers @model @auth(rules: [{allow: owner}, {allow: public}, {allow: private}]) {
+  id: ID!
+  Name: String
+  Address: String
+  PostCode: String
+  SortCode: String
+  AccountNumber: String
+  CarReg: String
+  MOTDate: AWSDate
+  StartDate: AWSDate
+  BasicWage: Float
+  StarRating: String
+  InsuranceDetails: AWSJSON
+  InterviewNotes: String
+  Nationality: String
+  YearsDriving: String
+  Deliverys: Int
+  ContractFinish: String
+  InternalReviews: String
+  ContractType: String
+  Area: String
+  driverhourss: [DriverHours] @manyToMany(relationName: "DriverHoursDrivers")
+  Resturants: [Resturants] @manyToMany(relationName: "DriversResturants")
+  orderss: [Orders] @manyToMany(relationName: "OrdersDrivers")
+  NationalInsurance: String
+  Telephone: String
+  LicenceNumber: String
+  PassedInterview: Boolean
+  DriverReviews: AWSJSON
+  DOB: String
+  InterviewAccepted: Boolean
+  HRnotes: String
+  Current: Boolean
+  County: String
+  Country: String
+}
+
 type Messages @model @auth(rules: [{allow: public}, {allow: private}, {allow: owner}]) {
   id: ID!
   content: String
@@ -6,6 +145,7 @@ type Messages @model @auth(rules: [{allow: public}, {allow: private}, {allow: ow
   group: [String]
   orderID: String
   Orders: [Orders] @manyToMany(relationName: "MessagesOrders")
+  ResturantID: String
 }
 
 type Orders @model @auth(rules: [{allow: public}, {allow: private}, {allow: owner}]) {
@@ -47,6 +187,11 @@ type Orders @model @auth(rules: [{allow: public}, {allow: private}, {allow: owne
   CustLat: Float
   CustLong: Float
   Paid: Boolean
+  ResturantID: String
+  DriverID: String
+  Resturants: [Resturants] @manyToMany(relationName: "OrdersResturants")
+  Drivers: [Drivers] @manyToMany(relationName: "OrdersDrivers")
+  StarRating: Int
 }
 
 type Staff @model @auth(rules: [{allow: public}, {allow: private}, {allow: owner}]) {
@@ -99,6 +244,7 @@ type KitchenMenu @model @auth(rules: [{allow: public}, {allow: private}, {allow:
   StockLevel: Int
   stockcontrols: [StockControl] @manyToMany(relationName: "StockControlKitchenMenu")
   Orders: [Orders] @manyToMany(relationName: "KitchenMenuOrders")
+  ResturantID: String
 }
 
 type HomePage @model @auth(rules: [{allow: public}, {allow: owner}, {allow: private}]) {
@@ -135,6 +281,7 @@ type ClockIn @model @auth(rules: [{allow: public}, {allow: private}, {allow: own
   BreakStart: AWSTime
   BreakEnd: AWSTime
   Holidays: [Holiday] @manyToMany(relationName: "ClockInHoliday")
+  DriverID: String
 }
 
 type StockControl @model @auth(rules: [{allow: public}, {allow: private}, {allow: owner}]) {
