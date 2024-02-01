@@ -56,7 +56,7 @@ type DriverHours @model @auth(rules: [{allow: public}]) {
   SaturdayResturant: String
   SundayResturant: String
   Drivers: [Drivers] @manyToMany(relationName: "DriverHoursDrivers")
-  Resturants: [Resturants] @manyToMany(relationName: "DriverHoursResturants")
+  Resturants: [TakeAway] @manyToMany(relationName: "DriverHoursTakeAway")
   MondayClockIns: AWSJSON
   TuesdayClockins: AWSJSON
   WedesdayClockins: AWSJSON
@@ -66,7 +66,7 @@ type DriverHours @model @auth(rules: [{allow: public}]) {
   SundayClockins: AWSJSON
 }
 
-type Resturants @model @auth(rules: [{allow: groups, groups: ["Drivers"], operations: [read, create, update, delete]}, {allow: groups, groups: ["Admin"], operations: [read, update, create, delete]}, {allow: owner}]) {
+type TakeAway @model @auth(rules: [{allow: groups, groups: ["Drivers"], operations: [read, create, update, delete]}, {allow: groups, groups: ["Admin"], operations: [read, update, create, delete]}, {allow: owner}]) {
   id: ID!
   Name: String
   Address: String
@@ -88,9 +88,9 @@ type Resturants @model @auth(rules: [{allow: groups, groups: ["Drivers"], operat
   SortCode: String
   AccountNumber: String
   DriverID: String
-  driverhourss: [DriverHours] @manyToMany(relationName: "DriverHoursResturants")
-  driverss: [Drivers] @manyToMany(relationName: "DriversResturants")
-  orderss: [Orders] @manyToMany(relationName: "OrdersResturants")
+  driverhourss: [DriverHours] @manyToMany(relationName: "DriverHoursTakeAway")
+  driverss: [Drivers] @manyToMany(relationName: "DriversTakeAway")
+  orderss: [Orders] @manyToMany(relationName: "OrdersTakeAway")
   Genre: String
   SalesNotes: String
   VisitTime: String
@@ -98,6 +98,12 @@ type Resturants @model @auth(rules: [{allow: groups, groups: ["Drivers"], operat
   VisitDate: String
   Prospect: Boolean
   Sold: Boolean
+  City: String
+  County: String
+  Area: String
+  KitchenMenus: [KitchenMenu] @manyToMany(relationName: "TakeAwayKitchenMenu")
+  Marketing: String
+  PromoBudget: String
 }
 
 type Drivers @model @auth(rules: [{allow: owner}, {allow: public}, {allow: private}]) {
@@ -122,7 +128,7 @@ type Drivers @model @auth(rules: [{allow: owner}, {allow: public}, {allow: priva
   ContractType: String
   Area: String
   driverhourss: [DriverHours] @manyToMany(relationName: "DriverHoursDrivers")
-  Resturants: [Resturants] @manyToMany(relationName: "DriversResturants")
+  Resturants: [TakeAway] @manyToMany(relationName: "DriversTakeAway")
   orderss: [Orders] @manyToMany(relationName: "OrdersDrivers")
   NationalInsurance: String
   Telephone: String
@@ -189,7 +195,7 @@ type Orders @model @auth(rules: [{allow: public}, {allow: private}, {allow: owne
   Paid: Boolean
   ResturantID: String
   DriverID: String
-  Resturants: [Resturants] @manyToMany(relationName: "OrdersResturants")
+  Resturants: [TakeAway] @manyToMany(relationName: "OrdersTakeAway")
   Drivers: [Drivers] @manyToMany(relationName: "OrdersDrivers")
   StarRating: Int
 }
@@ -245,6 +251,7 @@ type KitchenMenu @model @auth(rules: [{allow: public}, {allow: private}, {allow:
   stockcontrols: [StockControl] @manyToMany(relationName: "StockControlKitchenMenu")
   Orders: [Orders] @manyToMany(relationName: "KitchenMenuOrders")
   ResturantID: String
+  resturantss: [TakeAway] @manyToMany(relationName: "TakeAwayKitchenMenu")
 }
 
 type HomePage @model @auth(rules: [{allow: public}, {allow: owner}, {allow: private}]) {
@@ -301,5 +308,4 @@ type StockControl @model @auth(rules: [{allow: public}, {allow: private}, {allow
   UsedBy: String
   KitchenMenus: [KitchenMenu] @manyToMany(relationName: "StockControlKitchenMenu")
   MatchCode: String
-}
- 
+} 

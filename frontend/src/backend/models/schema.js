@@ -492,7 +492,7 @@ export const schema = {
                     "name": "Resturants",
                     "isArray": true,
                     "type": {
-                        "model": "DriverHoursResturants"
+                        "model": "DriverHoursTakeAway"
                     },
                     "isRequired": false,
                     "attributes": [],
@@ -595,8 +595,8 @@ export const schema = {
                 }
             ]
         },
-        "Resturants": {
-            "name": "Resturants",
+        "TakeAway": {
+            "name": "TakeAway",
             "fields": {
                 "id": {
                     "name": "id",
@@ -749,7 +749,7 @@ export const schema = {
                     "name": "driverhourss",
                     "isArray": true,
                     "type": {
-                        "model": "DriverHoursResturants"
+                        "model": "DriverHoursTakeAway"
                     },
                     "isRequired": false,
                     "attributes": [],
@@ -757,7 +757,7 @@ export const schema = {
                     "association": {
                         "connectionType": "HAS_MANY",
                         "associatedWith": [
-                            "resturants"
+                            "takeAway"
                         ]
                     }
                 },
@@ -765,7 +765,7 @@ export const schema = {
                     "name": "driverss",
                     "isArray": true,
                     "type": {
-                        "model": "DriversResturants"
+                        "model": "DriversTakeAway"
                     },
                     "isRequired": false,
                     "attributes": [],
@@ -773,7 +773,7 @@ export const schema = {
                     "association": {
                         "connectionType": "HAS_MANY",
                         "associatedWith": [
-                            "resturants"
+                            "takeAway"
                         ]
                     }
                 },
@@ -781,7 +781,7 @@ export const schema = {
                     "name": "orderss",
                     "isArray": true,
                     "type": {
-                        "model": "OrdersResturants"
+                        "model": "OrdersTakeAway"
                     },
                     "isRequired": false,
                     "attributes": [],
@@ -789,7 +789,7 @@ export const schema = {
                     "association": {
                         "connectionType": "HAS_MANY",
                         "associatedWith": [
-                            "resturants"
+                            "takeAway"
                         ]
                     }
                 },
@@ -842,6 +842,57 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "City": {
+                    "name": "City",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "County": {
+                    "name": "County",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "Area": {
+                    "name": "Area",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "KitchenMenus": {
+                    "name": "KitchenMenus",
+                    "isArray": true,
+                    "type": {
+                        "model": "TakeAwayKitchenMenu"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true,
+                    "association": {
+                        "connectionType": "HAS_MANY",
+                        "associatedWith": [
+                            "takeAway"
+                        ]
+                    }
+                },
+                "Marketing": {
+                    "name": "Marketing",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "PromoBudget": {
+                    "name": "PromoBudget",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -860,7 +911,7 @@ export const schema = {
                 }
             },
             "syncable": true,
-            "pluralName": "Resturants",
+            "pluralName": "TakeAways",
             "attributes": [
                 {
                     "type": "model",
@@ -1078,7 +1129,7 @@ export const schema = {
                     "name": "Resturants",
                     "isArray": true,
                     "type": {
-                        "model": "DriversResturants"
+                        "model": "DriversTakeAway"
                     },
                     "isRequired": false,
                     "attributes": [],
@@ -1680,7 +1731,7 @@ export const schema = {
                     "name": "Resturants",
                     "isArray": true,
                     "type": {
-                        "model": "OrdersResturants"
+                        "model": "OrdersTakeAway"
                     },
                     "isRequired": false,
                     "attributes": [],
@@ -2260,6 +2311,22 @@ export const schema = {
                     "type": "String",
                     "isRequired": false,
                     "attributes": []
+                },
+                "resturantss": {
+                    "name": "resturantss",
+                    "isArray": true,
+                    "type": {
+                        "model": "TakeAwayKitchenMenu"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true,
+                    "association": {
+                        "connectionType": "HAS_MANY",
+                        "associatedWith": [
+                            "kitchenMenu"
+                        ]
+                    }
                 },
                 "createdAt": {
                     "name": "createdAt",
@@ -3021,8 +3088,8 @@ export const schema = {
                 }
             ]
         },
-        "DriverHoursResturants": {
-            "name": "DriverHoursResturants",
+        "DriverHoursTakeAway": {
+            "name": "DriverHoursTakeAway",
             "fields": {
                 "id": {
                     "name": "id",
@@ -3038,8 +3105,8 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "resturantsId": {
-                    "name": "resturantsId",
+                "takeAwayId": {
+                    "name": "takeAwayId",
                     "isArray": false,
                     "type": "ID",
                     "isRequired": false,
@@ -3060,18 +3127,18 @@ export const schema = {
                         ]
                     }
                 },
-                "resturants": {
-                    "name": "resturants",
+                "takeAway": {
+                    "name": "takeAway",
                     "isArray": false,
                     "type": {
-                        "model": "Resturants"
+                        "model": "TakeAway"
                     },
                     "isRequired": true,
                     "attributes": [],
                     "association": {
                         "connectionType": "BELONGS_TO",
                         "targetNames": [
-                            "resturantsId"
+                            "takeAwayId"
                         ]
                     }
                 },
@@ -3093,7 +3160,7 @@ export const schema = {
                 }
             },
             "syncable": true,
-            "pluralName": "DriverHoursResturants",
+            "pluralName": "DriverHoursTakeAways",
             "attributes": [
                 {
                     "type": "model",
@@ -3111,16 +3178,16 @@ export const schema = {
                 {
                     "type": "key",
                     "properties": {
-                        "name": "byResturants",
+                        "name": "byTakeAway",
                         "fields": [
-                            "resturantsId"
+                            "takeAwayId"
                         ]
                     }
                 }
             ]
         },
-        "DriversResturants": {
-            "name": "DriversResturants",
+        "DriversTakeAway": {
+            "name": "DriversTakeAway",
             "fields": {
                 "id": {
                     "name": "id",
@@ -3129,8 +3196,8 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "resturantsId": {
-                    "name": "resturantsId",
+                "takeAwayId": {
+                    "name": "takeAwayId",
                     "isArray": false,
                     "type": "ID",
                     "isRequired": false,
@@ -3143,18 +3210,18 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "resturants": {
-                    "name": "resturants",
+                "takeAway": {
+                    "name": "takeAway",
                     "isArray": false,
                     "type": {
-                        "model": "Resturants"
+                        "model": "TakeAway"
                     },
                     "isRequired": true,
                     "attributes": [],
                     "association": {
                         "connectionType": "BELONGS_TO",
                         "targetNames": [
-                            "resturantsId"
+                            "takeAwayId"
                         ]
                     }
                 },
@@ -3191,7 +3258,7 @@ export const schema = {
                 }
             },
             "syncable": true,
-            "pluralName": "DriversResturants",
+            "pluralName": "DriversTakeAways",
             "attributes": [
                 {
                     "type": "model",
@@ -3200,9 +3267,9 @@ export const schema = {
                 {
                     "type": "key",
                     "properties": {
-                        "name": "byResturants",
+                        "name": "byTakeAway",
                         "fields": [
-                            "resturantsId"
+                            "takeAwayId"
                         ]
                     }
                 },
@@ -3217,8 +3284,8 @@ export const schema = {
                 }
             ]
         },
-        "OrdersResturants": {
-            "name": "OrdersResturants",
+        "OrdersTakeAway": {
+            "name": "OrdersTakeAway",
             "fields": {
                 "id": {
                     "name": "id",
@@ -3227,8 +3294,8 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "resturantsId": {
-                    "name": "resturantsId",
+                "takeAwayId": {
+                    "name": "takeAwayId",
                     "isArray": false,
                     "type": "ID",
                     "isRequired": false,
@@ -3241,18 +3308,18 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "resturants": {
-                    "name": "resturants",
+                "takeAway": {
+                    "name": "takeAway",
                     "isArray": false,
                     "type": {
-                        "model": "Resturants"
+                        "model": "TakeAway"
                     },
                     "isRequired": true,
                     "attributes": [],
                     "association": {
                         "connectionType": "BELONGS_TO",
                         "targetNames": [
-                            "resturantsId"
+                            "takeAwayId"
                         ]
                     }
                 },
@@ -3289,7 +3356,7 @@ export const schema = {
                 }
             },
             "syncable": true,
-            "pluralName": "OrdersResturants",
+            "pluralName": "OrdersTakeAways",
             "attributes": [
                 {
                     "type": "model",
@@ -3298,9 +3365,9 @@ export const schema = {
                 {
                     "type": "key",
                     "properties": {
-                        "name": "byResturants",
+                        "name": "byTakeAway",
                         "fields": [
-                            "resturantsId"
+                            "takeAwayId"
                         ]
                     }
                 },
@@ -3310,6 +3377,104 @@ export const schema = {
                         "name": "byOrders",
                         "fields": [
                             "ordersId"
+                        ]
+                    }
+                }
+            ]
+        },
+        "TakeAwayKitchenMenu": {
+            "name": "TakeAwayKitchenMenu",
+            "fields": {
+                "id": {
+                    "name": "id",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "takeAwayId": {
+                    "name": "takeAwayId",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "kitchenMenuId": {
+                    "name": "kitchenMenuId",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "takeAway": {
+                    "name": "takeAway",
+                    "isArray": false,
+                    "type": {
+                        "model": "TakeAway"
+                    },
+                    "isRequired": true,
+                    "attributes": [],
+                    "association": {
+                        "connectionType": "BELONGS_TO",
+                        "targetNames": [
+                            "takeAwayId"
+                        ]
+                    }
+                },
+                "kitchenMenu": {
+                    "name": "kitchenMenu",
+                    "isArray": false,
+                    "type": {
+                        "model": "KitchenMenu"
+                    },
+                    "isRequired": true,
+                    "attributes": [],
+                    "association": {
+                        "connectionType": "BELONGS_TO",
+                        "targetNames": [
+                            "kitchenMenuId"
+                        ]
+                    }
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                }
+            },
+            "syncable": true,
+            "pluralName": "TakeAwayKitchenMenus",
+            "attributes": [
+                {
+                    "type": "model",
+                    "properties": {}
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byTakeAway",
+                        "fields": [
+                            "takeAwayId"
+                        ]
+                    }
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byKitchenMenu",
+                        "fields": [
+                            "kitchenMenuId"
                         ]
                     }
                 }
@@ -3907,5 +4072,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "c255e012c1a0d0985b2d4af0611ae566"
+    "version": "229c03b9a7acd5540191884a01db17de"
 };

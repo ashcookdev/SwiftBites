@@ -4,13 +4,13 @@ import { schema } from './schema';
 
 
 
-const { InterviewSlots, ResturantInvoice, DriverHours, Resturants, Drivers, Messages, Orders, Staff, TimeEntry, KitchenMenu, HomePage, Holiday, ClockIn, StockControl, DriverHoursDrivers, DriverHoursResturants, DriversResturants, OrdersResturants, OrdersDrivers, MessagesOrders, KitchenMenuOrders, TimeEntryStaff, StockControlKitchenMenu, ClockInHoliday } = initSchema(schema);
+const { InterviewSlots, ResturantInvoice, DriverHours, TakeAway, Drivers, Messages, Orders, Staff, TimeEntry, KitchenMenu, HomePage, Holiday, ClockIn, StockControl, DriverHoursDrivers, DriverHoursTakeAway, DriversTakeAway, OrdersTakeAway, TakeAwayKitchenMenu, OrdersDrivers, MessagesOrders, KitchenMenuOrders, TimeEntryStaff, StockControlKitchenMenu, ClockInHoliday } = initSchema(schema);
 
 export {
   InterviewSlots,
   ResturantInvoice,
   DriverHours,
-  Resturants,
+  TakeAway,
   Drivers,
   Messages,
   Orders,
@@ -22,9 +22,10 @@ export {
   ClockIn,
   StockControl,
   DriverHoursDrivers,
-  DriverHoursResturants,
-  DriversResturants,
-  OrdersResturants,
+  DriverHoursTakeAway,
+  DriversTakeAway,
+  OrdersTakeAway,
+  TakeAwayKitchenMenu,
   OrdersDrivers,
   MessagesOrders,
   KitchenMenuOrders,

@@ -139,7 +139,7 @@ type EagerDriverHours = {
   readonly SaturdayResturant?: string | null;
   readonly SundayResturant?: string | null;
   readonly Drivers?: (DriverHoursDrivers | null)[] | null;
-  readonly Resturants?: (DriverHoursResturants | null)[] | null;
+  readonly Resturants?: (DriverHoursTakeAway | null)[] | null;
   readonly MondayClockIns?: string | null;
   readonly TuesdayClockins?: string | null;
   readonly WedesdayClockins?: string | null;
@@ -180,7 +180,7 @@ type LazyDriverHours = {
   readonly SaturdayResturant?: string | null;
   readonly SundayResturant?: string | null;
   readonly Drivers: AsyncCollection<DriverHoursDrivers>;
-  readonly Resturants: AsyncCollection<DriverHoursResturants>;
+  readonly Resturants: AsyncCollection<DriverHoursTakeAway>;
   readonly MondayClockIns?: string | null;
   readonly TuesdayClockins?: string | null;
   readonly WedesdayClockins?: string | null;
@@ -198,9 +198,9 @@ export declare const DriverHours: (new (init: ModelInit<DriverHours>) => DriverH
   copyOf(source: DriverHours, mutator: (draft: MutableModel<DriverHours>) => MutableModel<DriverHours> | void): DriverHours;
 }
 
-type EagerResturants = {
+type EagerTakeAway = {
   readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<Resturants, 'id'>;
+    identifier: ManagedIdentifier<TakeAway, 'id'>;
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
@@ -224,9 +224,9 @@ type EagerResturants = {
   readonly SortCode?: string | null;
   readonly AccountNumber?: string | null;
   readonly DriverID?: string | null;
-  readonly driverhourss?: (DriverHoursResturants | null)[] | null;
-  readonly driverss?: (DriversResturants | null)[] | null;
-  readonly orderss?: (OrdersResturants | null)[] | null;
+  readonly driverhourss?: (DriverHoursTakeAway | null)[] | null;
+  readonly driverss?: (DriversTakeAway | null)[] | null;
+  readonly orderss?: (OrdersTakeAway | null)[] | null;
   readonly Genre?: string | null;
   readonly SalesNotes?: string | null;
   readonly VisitTime?: string | null;
@@ -234,13 +234,19 @@ type EagerResturants = {
   readonly VisitDate?: string | null;
   readonly Prospect?: boolean | null;
   readonly Sold?: boolean | null;
+  readonly City?: string | null;
+  readonly County?: string | null;
+  readonly Area?: string | null;
+  readonly KitchenMenus?: (TakeAwayKitchenMenu | null)[] | null;
+  readonly Marketing?: string | null;
+  readonly PromoBudget?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
 
-type LazyResturants = {
+type LazyTakeAway = {
   readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<Resturants, 'id'>;
+    identifier: ManagedIdentifier<TakeAway, 'id'>;
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
@@ -264,9 +270,9 @@ type LazyResturants = {
   readonly SortCode?: string | null;
   readonly AccountNumber?: string | null;
   readonly DriverID?: string | null;
-  readonly driverhourss: AsyncCollection<DriverHoursResturants>;
-  readonly driverss: AsyncCollection<DriversResturants>;
-  readonly orderss: AsyncCollection<OrdersResturants>;
+  readonly driverhourss: AsyncCollection<DriverHoursTakeAway>;
+  readonly driverss: AsyncCollection<DriversTakeAway>;
+  readonly orderss: AsyncCollection<OrdersTakeAway>;
   readonly Genre?: string | null;
   readonly SalesNotes?: string | null;
   readonly VisitTime?: string | null;
@@ -274,14 +280,20 @@ type LazyResturants = {
   readonly VisitDate?: string | null;
   readonly Prospect?: boolean | null;
   readonly Sold?: boolean | null;
+  readonly City?: string | null;
+  readonly County?: string | null;
+  readonly Area?: string | null;
+  readonly KitchenMenus: AsyncCollection<TakeAwayKitchenMenu>;
+  readonly Marketing?: string | null;
+  readonly PromoBudget?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
 
-export declare type Resturants = LazyLoading extends LazyLoadingDisabled ? EagerResturants : LazyResturants
+export declare type TakeAway = LazyLoading extends LazyLoadingDisabled ? EagerTakeAway : LazyTakeAway
 
-export declare const Resturants: (new (init: ModelInit<Resturants>) => Resturants) & {
-  copyOf(source: Resturants, mutator: (draft: MutableModel<Resturants>) => MutableModel<Resturants> | void): Resturants;
+export declare const TakeAway: (new (init: ModelInit<TakeAway>) => TakeAway) & {
+  copyOf(source: TakeAway, mutator: (draft: MutableModel<TakeAway>) => MutableModel<TakeAway> | void): TakeAway;
 }
 
 type EagerDrivers = {
@@ -310,7 +322,7 @@ type EagerDrivers = {
   readonly ContractType?: string | null;
   readonly Area?: string | null;
   readonly driverhourss?: (DriverHoursDrivers | null)[] | null;
-  readonly Resturants?: (DriversResturants | null)[] | null;
+  readonly Resturants?: (DriversTakeAway | null)[] | null;
   readonly orderss?: (OrdersDrivers | null)[] | null;
   readonly NationalInsurance?: string | null;
   readonly Telephone?: string | null;
@@ -353,7 +365,7 @@ type LazyDrivers = {
   readonly ContractType?: string | null;
   readonly Area?: string | null;
   readonly driverhourss: AsyncCollection<DriverHoursDrivers>;
-  readonly Resturants: AsyncCollection<DriversResturants>;
+  readonly Resturants: AsyncCollection<DriversTakeAway>;
   readonly orderss: AsyncCollection<OrdersDrivers>;
   readonly NationalInsurance?: string | null;
   readonly Telephone?: string | null;
@@ -459,7 +471,7 @@ type EagerOrders = {
   readonly Paid?: boolean | null;
   readonly ResturantID?: string | null;
   readonly DriverID?: string | null;
-  readonly Resturants?: (OrdersResturants | null)[] | null;
+  readonly Resturants?: (OrdersTakeAway | null)[] | null;
   readonly Drivers?: (OrdersDrivers | null)[] | null;
   readonly StarRating?: number | null;
   readonly createdAt?: string | null;
@@ -511,7 +523,7 @@ type LazyOrders = {
   readonly Paid?: boolean | null;
   readonly ResturantID?: string | null;
   readonly DriverID?: string | null;
-  readonly Resturants: AsyncCollection<OrdersResturants>;
+  readonly Resturants: AsyncCollection<OrdersTakeAway>;
   readonly Drivers: AsyncCollection<OrdersDrivers>;
   readonly StarRating?: number | null;
   readonly createdAt?: string | null;
@@ -646,6 +658,7 @@ type EagerKitchenMenu = {
   readonly stockcontrols?: (StockControlKitchenMenu | null)[] | null;
   readonly Orders?: (KitchenMenuOrders | null)[] | null;
   readonly ResturantID?: string | null;
+  readonly resturantss?: (TakeAwayKitchenMenu | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -674,6 +687,7 @@ type LazyKitchenMenu = {
   readonly stockcontrols: AsyncCollection<StockControlKitchenMenu>;
   readonly Orders: AsyncCollection<KitchenMenuOrders>;
   readonly ResturantID?: string | null;
+  readonly resturantss: AsyncCollection<TakeAwayKitchenMenu>;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -902,106 +916,140 @@ export declare const DriverHoursDrivers: (new (init: ModelInit<DriverHoursDriver
   copyOf(source: DriverHoursDrivers, mutator: (draft: MutableModel<DriverHoursDrivers>) => MutableModel<DriverHoursDrivers> | void): DriverHoursDrivers;
 }
 
-type EagerDriverHoursResturants = {
+type EagerDriverHoursTakeAway = {
   readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<DriverHoursResturants, 'id'>;
+    identifier: ManagedIdentifier<DriverHoursTakeAway, 'id'>;
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
   readonly driverHoursId?: string | null;
-  readonly resturantsId?: string | null;
+  readonly takeAwayId?: string | null;
   readonly driverHours: DriverHours;
-  readonly resturants: Resturants;
+  readonly takeAway: TakeAway;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
 
-type LazyDriverHoursResturants = {
+type LazyDriverHoursTakeAway = {
   readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<DriverHoursResturants, 'id'>;
+    identifier: ManagedIdentifier<DriverHoursTakeAway, 'id'>;
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
   readonly driverHoursId?: string | null;
-  readonly resturantsId?: string | null;
+  readonly takeAwayId?: string | null;
   readonly driverHours: AsyncItem<DriverHours>;
-  readonly resturants: AsyncItem<Resturants>;
+  readonly takeAway: AsyncItem<TakeAway>;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
 
-export declare type DriverHoursResturants = LazyLoading extends LazyLoadingDisabled ? EagerDriverHoursResturants : LazyDriverHoursResturants
+export declare type DriverHoursTakeAway = LazyLoading extends LazyLoadingDisabled ? EagerDriverHoursTakeAway : LazyDriverHoursTakeAway
 
-export declare const DriverHoursResturants: (new (init: ModelInit<DriverHoursResturants>) => DriverHoursResturants) & {
-  copyOf(source: DriverHoursResturants, mutator: (draft: MutableModel<DriverHoursResturants>) => MutableModel<DriverHoursResturants> | void): DriverHoursResturants;
+export declare const DriverHoursTakeAway: (new (init: ModelInit<DriverHoursTakeAway>) => DriverHoursTakeAway) & {
+  copyOf(source: DriverHoursTakeAway, mutator: (draft: MutableModel<DriverHoursTakeAway>) => MutableModel<DriverHoursTakeAway> | void): DriverHoursTakeAway;
 }
 
-type EagerDriversResturants = {
+type EagerDriversTakeAway = {
   readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<DriversResturants, 'id'>;
+    identifier: ManagedIdentifier<DriversTakeAway, 'id'>;
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly resturantsId?: string | null;
+  readonly takeAwayId?: string | null;
   readonly driversId?: string | null;
-  readonly resturants: Resturants;
+  readonly takeAway: TakeAway;
   readonly drivers: Drivers;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
 
-type LazyDriversResturants = {
+type LazyDriversTakeAway = {
   readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<DriversResturants, 'id'>;
+    identifier: ManagedIdentifier<DriversTakeAway, 'id'>;
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly resturantsId?: string | null;
+  readonly takeAwayId?: string | null;
   readonly driversId?: string | null;
-  readonly resturants: AsyncItem<Resturants>;
+  readonly takeAway: AsyncItem<TakeAway>;
   readonly drivers: AsyncItem<Drivers>;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
 
-export declare type DriversResturants = LazyLoading extends LazyLoadingDisabled ? EagerDriversResturants : LazyDriversResturants
+export declare type DriversTakeAway = LazyLoading extends LazyLoadingDisabled ? EagerDriversTakeAway : LazyDriversTakeAway
 
-export declare const DriversResturants: (new (init: ModelInit<DriversResturants>) => DriversResturants) & {
-  copyOf(source: DriversResturants, mutator: (draft: MutableModel<DriversResturants>) => MutableModel<DriversResturants> | void): DriversResturants;
+export declare const DriversTakeAway: (new (init: ModelInit<DriversTakeAway>) => DriversTakeAway) & {
+  copyOf(source: DriversTakeAway, mutator: (draft: MutableModel<DriversTakeAway>) => MutableModel<DriversTakeAway> | void): DriversTakeAway;
 }
 
-type EagerOrdersResturants = {
+type EagerOrdersTakeAway = {
   readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<OrdersResturants, 'id'>;
+    identifier: ManagedIdentifier<OrdersTakeAway, 'id'>;
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly resturantsId?: string | null;
+  readonly takeAwayId?: string | null;
   readonly ordersId?: string | null;
-  readonly resturants: Resturants;
+  readonly takeAway: TakeAway;
   readonly orders: Orders;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
 
-type LazyOrdersResturants = {
+type LazyOrdersTakeAway = {
   readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<OrdersResturants, 'id'>;
+    identifier: ManagedIdentifier<OrdersTakeAway, 'id'>;
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly resturantsId?: string | null;
+  readonly takeAwayId?: string | null;
   readonly ordersId?: string | null;
-  readonly resturants: AsyncItem<Resturants>;
+  readonly takeAway: AsyncItem<TakeAway>;
   readonly orders: AsyncItem<Orders>;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
 
-export declare type OrdersResturants = LazyLoading extends LazyLoadingDisabled ? EagerOrdersResturants : LazyOrdersResturants
+export declare type OrdersTakeAway = LazyLoading extends LazyLoadingDisabled ? EagerOrdersTakeAway : LazyOrdersTakeAway
 
-export declare const OrdersResturants: (new (init: ModelInit<OrdersResturants>) => OrdersResturants) & {
-  copyOf(source: OrdersResturants, mutator: (draft: MutableModel<OrdersResturants>) => MutableModel<OrdersResturants> | void): OrdersResturants;
+export declare const OrdersTakeAway: (new (init: ModelInit<OrdersTakeAway>) => OrdersTakeAway) & {
+  copyOf(source: OrdersTakeAway, mutator: (draft: MutableModel<OrdersTakeAway>) => MutableModel<OrdersTakeAway> | void): OrdersTakeAway;
+}
+
+type EagerTakeAwayKitchenMenu = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<TakeAwayKitchenMenu, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly takeAwayId?: string | null;
+  readonly kitchenMenuId?: string | null;
+  readonly takeAway: TakeAway;
+  readonly kitchenMenu: KitchenMenu;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyTakeAwayKitchenMenu = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<TakeAwayKitchenMenu, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly takeAwayId?: string | null;
+  readonly kitchenMenuId?: string | null;
+  readonly takeAway: AsyncItem<TakeAway>;
+  readonly kitchenMenu: AsyncItem<KitchenMenu>;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type TakeAwayKitchenMenu = LazyLoading extends LazyLoadingDisabled ? EagerTakeAwayKitchenMenu : LazyTakeAwayKitchenMenu
+
+export declare const TakeAwayKitchenMenu: (new (init: ModelInit<TakeAwayKitchenMenu>) => TakeAwayKitchenMenu) & {
+  copyOf(source: TakeAwayKitchenMenu, mutator: (draft: MutableModel<TakeAwayKitchenMenu>) => MutableModel<TakeAwayKitchenMenu> | void): TakeAwayKitchenMenu;
 }
 
 type EagerOrdersDrivers = {
